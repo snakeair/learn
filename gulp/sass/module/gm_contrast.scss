@@ -1,0 +1,65 @@
+/*
+* @Author: admin
+* @Date:   2016-04-15 09:33:37
+* @Last Modified by:   admin
+* @Last Modified time: 2016-04-26 08:46:29
+*/
+.gm_contrast_banner{
+    background: #272837 url(../../images/contrast.jpg) no-repeat center; width: 100%; height:300px; text-align: center;
+    .inp_search{width: 675px; height:44px; background-color:$color_g; display:inline-block; margin-top: 148px; text-align: left;}
+    .inp_text{width: 550px;height:44px; line-height: 44px; padding-left: 10px; background-color:#fff;  border:none; font-size: 14px;  }
+    .search_btn{ display:inline-block;  width: 114px; height:44px; text-align: center; line-height: 44px; color:#fff; font-size: 16px; background:$color_g; vertical-align: top; 
+        .gmc_ft_icon{font-size: 20px; margin-top: -4px; padding-right: 4px;}
+        &:hover{background:#1cc996;}
+    }
+}
+
+.gm_contrast{
+    width: 1180px; margin:0 auto 40px;
+    h3.title{color:#333333; font-size: 16px; line-height: 50px;}
+    .brand_list{
+        padding:10px; width: 1152px; background:#fff; overflow: hidden; padding-left: 18px;
+        a{
+            color:#666666; font-size: 12px; text-align: left; display:inline-block; padding-left: 20px; width: 100px; line-height: 32px; margin-right: 8px; float: left;
+            &:hover{background-color:$color_red; color:#fff;}
+        }
+    }
+}
+.gm_contrast_menu{
+    width: 250px; background-color:#fff; padding-left: 20px; overflow: hidden; padding-bottom: 10px; float: left; margin-bottom: 40px;
+    .title{font-size: 16px; color:#333; line-height: 56px;}
+    a{
+        width: 36px; height: 36px; border:1px solid #eee;  line-height: 36px; text-align: center; display:inline-block; float: left; margin-right: 10px; margin-bottom: 10px; color:#999999; font-size: 12px;
+        &:hover{border-color:$color_red; color:$color_red;}
+    }
+    a.cur{ border-color:$color_red;  background:$color_red; color:#fff;}
+}
+
+.gm_contrast_slay{
+    width: 880px; background-color:#fff; padding-left: 20px; padding-bottom: 20px; margin-bottom: 40px; float: right;
+    .title{
+        font-size: 16px; color:#333333;  line-height: 56px;
+    }
+
+    .slay_list{width: 858px; border:1px solid #eee; margin-bottom: 10px;}
+    .slay_list_title{
+        overflow: hidden; background-color:#fff; width: 838px; line-height: 36px; color:#999999; display:inline-block; padding-left: 20px;
+        i{float: right; font-size: 20px; margin-right: 20px; }
+        &:hover{color:#666666; i{color:#666666;}}
+    }
+    .slay_list_title_cur{background-color:#eee;}
+    .slay_branch{
+        overflow: hidden; padding:10px 0 10px 20px; display:none;
+        li{
+            float: left; width: 264px; padding-right: 10px; font-size: 12px; line-height: 22px; color:#999; overflow: hidden;
+            span{color:#ccc; float: left;}
+            .branch{color:#999; width: 210px;}
+        }
+    }
+    .gcs_none{
+        text-align: center; height:170px; margin-top: 90px;
+        i{margin-bottom: 20px;}
+        .err{font-size: 16px; color:#666666;}
+    }
+}
+.search_red{color:$color_red;}

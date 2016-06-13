@@ -1,0 +1,176 @@
+/*
+* @Author: admin
+* @Date:   2016-04-18 09:44:04
+* @Last Modified by:   admin
+* @Last Modified time: 2016-06-01 09:18:44
+*/
+/* html{font-size:75%;}
+.html_nav{height:100%; overflow: hidden;}
+
+.gm_news_top{
+    overflow: hidden;
+    .logo{
+        width: 8.9rem; height: 4.3rem;  display: inline-block; margin-left: 1.6rem; line-height: 4.3rem; float: left;
+    } 
+    height:4.3rem; border-bottom:0.1rem solid #eaeaea;
+    .nav{
+        font-size: 1.3rem; color:#333333;  float: left; margin-left:6.1rem;
+        UL{overflow: hidden;}
+        li{float:left;  margin-right: 4.6rem; line-height: 4.3rem;}
+        a{
+            color:#333;
+            &:hover{
+                color:$color_g;
+            }
+            &.cur{color:$color_g}
+        }
+    }
+    .phone{
+        float: right; color:$color_g; font-size: 1.3rem; font-style:italic; line-height: 4.9rem; font-weight: bold; line-height:4.9rem; margin-right: 1.6rem;
+        i{font-size: 1.6rem; margin-top:-0.2rem; margin-right: 0.8rem; }
+    }
+}
+.gm_news_list{
+    width: 68rem; margin:0 auto; overflow: hidden;
+    .title{
+        font-size: 1.5rem; color:#333333; line-height: 1; margin-top:2.5rem; font-weight: 400; overflow: hidden;
+        
+    }
+    .news_section{margin-top: 2.5rem; overflow: hidden;    }
+    .img_link{display:inline-block; float: left; width: 21.6rem; overflow: hidden;   }
+    .news_img{
+         width: 21.6rem;
+    }
+    .news_content{
+         margin-left: 23rem; color:#333; 
+    }
+    .news_title a{
+        font-size: 1.5rem; color:#333333; line-height: 1; margin-bottom: 1.6rem;  @include AddDot();
+        &:hover{
+            color:$color_g;
+        }
+    }
+    .news_act{
+        height: 8rem; font-size: 1.1rem; color:#999999;
+    }
+    .news_info{
+        line-height: 1.5rem; overflow: hidden;
+        .author{float: right; font-size: 1.1rem; color:#333333;}
+        span{display:block; float: left; color:#999999;}
+        .gmc_ft_icon{color:#bbb; margin-right: 6px; }
+        .scan{padding-right:1.6rem; border-right:0.1rem solid #bbb;}
+        .time{font-size: 1.1rem;  margin-left: 1.6rem;}
+    }
+    .news_more_btn{
+        width: 68.3rem; height:5rem; line-height: 5rem; text-align: center; color:#fff; display:block; background:#58d7b3; font-size: 1.5rem; margin-top: 3.3rem;
+        &:hover{background:#1cc996;}
+    }
+}
+.news_main{
+    overflow: hidden; min-height:30rem; padding-right:25rem; position: relative; padding-bottom: 4.1rem; margin:0 auto;
+}
+
+.newest{
+    width: 21.7rem; padding:0 1.6rem;  background:#f5f5f5; float: right; height:100%; position: absolute; top:0; right:.0rem;
+    .title{
+        font-size: 1.5rem; color:#333; font-weight: 400; margin:2.5rem 0; line-height: 1;
+        .more{float: right; font-size: 14px; color:#999; &:hover{color:$color_g;}}
+    }
+    .news_list{
+        margin-bottom: 1.6rem;
+        .number{    
+            width: 1.3rem; height:1.3rem; background:$color_g; line-height: 1.3rem; text-align: center; color:#fff; display:inline-block; margin-right: 0.8rem;  margin-top: 0.1rem; vertical-align: top;
+        } 
+        .news_title{font-size: 1.1rem; color:#333333; line-height: 1.5rem; display:inline-block; width: 18.5rem;     white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;  &:hover{color:$color_g} }  
+        dd{color:#999999; font-size: 1.1rem; margin-left: 2.1rem; line-height: 1.5rem;}
+    }
+}
+.footer{
+    width: 100%; background:#3f3f3f; overflow: hidden;
+    .foonter_nav{
+        overflow: hidden; margin:1.6rem auto 0; width: 33.3rem;  font-size: 1rem;
+        li{float: left; border-right:0.1rem solid #616161; padding:0 1.1rem; text-align: center; &.last{border:none;}}
+    }
+     p{text-align: center; font-size: 1rem; line-height: 1; margin-top: 1.6rem;}
+    .phone{color:#999; i{font-size: 1.3rem; margin:-0.2rem 0.2rem 0 0.2rem}}
+    .contact{color:#666666; padding-bottom: 1.3rem;}
+}
+
+.mobile_footer{
+    display: none;  background:#3f3f3f; overflow: hidden; padding-bottom: 2rem; margin:0 auto; width: 100%;
+    p{text-align: center; font-size: 1.0rem; margin-top: 0.5rem;}
+    .phone{
+        color:#999;text-align: center; margin-top: 1.6rem;   span{color:$color_g;} 
+    }
+}
+.gm_mobile_top{
+    display: none; overflow: hidden; height: 4.7rem;  border-bottom: 0.1rem solid #eaeaea;
+    .logo{
+        width: 8.9rem; height: 4.75rem;  display: inline-block; margin-left:0.8rem; line-height:4.75rem; float: left;
+    } 
+    .to_nav{
+        float: right; width: 2.1rem; line-height: 4.75rem;
+    }
+}
+.mobile_nav{
+    position: absolute; top:4.9rem; left:0; height:0; width:100%; background:#fff; z-index:10; transition:all 0.5s;-webkit-transition:all 0.5s;-moz-transition:all 0.5s; overflow: hidden;
+    .nav{
+        width: 20rem;  margin:0 auto; 
+        a{
+            display:block;  border-bottom:.1rem solid #f0f0f0; width: 20rem; line-height: 4.1rem; text-align: center; font-size: 1.1rem;
+            &:hover{color:$color_g;}
+            &.modile_vur{color:$color_g;}
+        }
+    }
+}
+
+//content
+.news_detail{
+    position: relative;  padding-right:25rem; margin:0 auto; padding-bottom: 4.1rem; min-height:30rem;
+    .detail{
+        width: 65rem; margin:0 auto;
+        .news_title{font-size: 2.3rem; color:#333; font-weight: 400; padding-top: 1.6rem;}
+        .news_info{overflow: hidden; width: 100%; font-size: 1.1rem; color:#999; margin-top: 1.6rem;}
+        .author{float: right;font-size: 1.1rem; color:#333333; line-height: 1.1rem;}
+        .scan{padding-right: 1.6rem; border-right:0.1rem solid #bbb; display:inline-block; line-height: 1.1rem;}
+        .gmc_ft_icon{font-size: 1.3rem; margin-right: 0.2rem; color:#bbb;}
+        .time{margin-left: 1.6rem;}
+        .summary{
+            width: 100%; border-left:0.3rem solid #ddd; background:#f6f6f6; margin-top: 2.1rem; margin-bottom: 1.6rem; font-size: 1.3rem; box-sizing:border-box;
+            p{ padding:0.8rem 2.5rem;}
+        }
+        img{width: 100%; margin:1rem 0;}
+        .gml_ewm_news img{margin:0;}
+        .share{
+            position: absolute; margin-left:-4.1rem; margin-top: 1.6rem; width: 3.3rem;
+            a{width: 3.3rem !important; height:3.3rem !important; background:#f6f6f6 !important; background-image:none !important; margin:0 0 .1rem 0 !important; line-height: 3.3rem !important; text-align: center; color:#c8c8c8 !important;    text-indent:0 !important; font-size:2.5rem; 
+                &.back_top{font-size: 2.1rem; display:none;  }
+                &.back_top:hover{color:#3dd1a6 !important;}
+                &.bds_tsina:hover{color: #ff4242 !important; opacity:1;}
+                &.bds_qzone:hover{color: #f0d877 !important; opacity:1;}
+                &.ft_wx:hover{color: #4bc93e !important; opacity:1;}
+            }
+        }
+        .share_fixed{position: fixed; top:1.6rem; }
+    }   
+}
+
+.footer_share{
+    height:3.3rem; border-top:0.2rem solid #eaeaea; margin-top: 1.6rem; width: 100%; background:#fff; display:none;
+    .bdsharebuttonbox{width: 90%; margin: 0 auto;  }
+    a{width: 30% !important; height:3.1rem !important;  font-size: 2.1rem !important; line-height: 3.1rem !important; text-align: center; color:#c8c8c8 !important; background-image:none !important; background-color:#fff !important; text-indent:0 !important; font-size: 2.6rem !important;  margin:0 !important;
+        &.back_top{font-size: 2rem;}
+        &.back_top:hover{color:$color_g !important;}
+        &.bds_tsina:hover{color: #ff4242 !important; opacity:1;}
+        &.bds_qzone:hover{color: #f0d877 !important; opacity:1;}
+        &.ft_wx:hover{color: #4bc93e !important; opacity:1;}
+     }
+}
+.footer_share_fixed{position: fixed; bottom:0; left:0;}
+
+.list_back_top{display:inline-block; width: 3.3rem; height: 3.3rem; background:#fff; background:#f6f6f6; line-height: 3.3rem; text-align: center; font-size: 2rem; color:#c8c8c8; position: fixed; bottom:1rem; left:1rem;  display: none;
+    &:hover{color:$color_g;}
+}
+ */
+
+

@@ -1,0 +1,40 @@
+/*
+* @Author: admin
+* @Date:   2016-04-15 13:12:47
+* @Last Modified by:   admin
+* @Last Modified time: 2016-04-29 08:35:16
+*/
+.gm_false_number{
+    width: 1180px; height:460px; background:url(../../images/img_404.png) no-repeat 200px 100px; position: relative; margin:0 auto;
+    .false_info{
+        position: absolute; left:580px; top:140px;
+        .info_one{font-size: 18px; color:#cccccc;}
+        .info_two{color:#7bc6b0; font-size: 32px; margin-top: 10px;}
+        .out{line-height: 36px; font-size: 14px;color:#999; margin-top: 15px;  display: block;}
+        .back_index{color:$color_red; margin-left: 2px; &:hover{color:$color_g;}}
+        .gmc_btn_b{width: 98px; height:36px; line-height: 36px; margin-right: 20px;}
+        .time{color:$color_red; margin-right: 4px;}
+    }
+}
+.gm_nothing{
+    width: 380px; margin:40px auto 80px; text-align: center;
+    .sorry{
+        text-align: center;
+    }
+    .info_one{margin-top: 10px; font-size: 16px; color:#666666; .brand{color:$color_red;}}
+    .info_two{color:$color_g;  margin-top: 10px; span{margin-right: 5px;} a{color:$color_g; &:hover{text-decoration:underline;}}}
+    .title{font-size: 16px; color:#666666; margin-top: 30px; text-align: center;margin-bottom: 20px;}
+    .inp_tarea{width: 260px; height: 60px; padding:10px; border:none; margin-bottom: 20px; font-size: 14px;}
+    .inp_list{
+        width: 280px; height:48px; display:inline-block; text-align: left; overflow: hidden; margin-bottom: 20px; position: relative;
+        input{border:none; font-size: 14px; color:#cccccc; float: left; line-height: 48px; height:48px; padding-left: 10px;}
+        .money{font-size: 14px; color:#333333; position: absolute; left:120px; margin-top: 14px; *left: -160px;}
+        .inp_price{width: 109px; border-right:1px solid #eee; padding-right:20px; font-size: 14px;   }
+        .inp_phone{width: 130px; font-size: 14px;}
+    }
+    .gmc_btn_b{width: 280px; height:40px; line-height: 40px; margin-bottom: 14px; }
+    .phone{font-size: 14px;   color:$color_red;}
+    .error{width: 278px; line-height: 32px; background:#fffcd8; border:1px solid #ffdb86; color:#666666; margin:auto; margin-top: 10px; text-align: left; margin-bottom: 10px; display:none;
+        i{font-size: 24px; color:#f8af00; margin:0 5px 0 10px;}
+    }
+}

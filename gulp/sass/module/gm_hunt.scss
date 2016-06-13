@@ -1,0 +1,92 @@
+/*
+* @Author: admin
+* @Date:   2016-04-07 10:02:07
+* @Last Modified by:   admin
+* @Last Modified time: 2016-05-11 09:28:24
+*/
+.gm_hunt_banner{
+    width: 100%; height: 414px; background:url(../../images/hunt_banner.jpg) repeat-x center top;overflow: hidden;
+    .hunt_form{width: 1180px; margin:0 auto; overflow: hidden; background:url(../../images/bg_hunt_center.png) no-repeat right top;}
+    .form_main{
+        width: 280px; background:url(../../images/bg_hunt_form.png);  margin-top: 30px; overflow: hidden; padding:0 20px;
+        .title{
+            text-align: center; color:#fff; font-size: 16px; line-height: 24px; font-weight: 100; margin-top: 15px; margin-bottom: 10px;
+        }
+        .title_two{
+            overflow: hidden; margin-bottom: 18px;
+            dt{font-size: 12px; color:#96F4D8;  text-align: center; width: 115px; float: left; }
+            dd{width: 80px; background:#96F4D8; height:1px; float: left; margin-top: 8px;
+            }
+        }
+        .error{
+        width: 278px; height:32px; line-height: 32px; border:1px solid #ffdb86; background:#fffcd8; margin-bottom: 10px; display:none;
+        .gmc_ft_icon{color:#f8af00; font-size: 24px; margin:0 6px 0 10px;}
+    }
+    .text_txt{width: 260px; height: 60px; border:none;  font-size: 14px; padding:10px; margin-bottom: 6px;}
+    .form_inp{
+        width: 280px; margin-bottom: 20px; overflow: hidden;
+        dt{
+            float: right;
+            input{width: 130px; height:48px; line-height: 48px; border:none; font-size: 14px; padding-left: 10px; background:#fff;}
+
+        }
+        dd{
+            float: left;
+            input{width: 89px; height:48px; line-height: 48px; border:none; border-right:1px solid #eee; font-size: 14px; padding-left: 10px; background:#fff; padding-right: 40px;}
+            .money{ font-size: 14px; color:#333333; margin-left: -26px; margin-top: 16px;} 
+        }
+    } 
+    .gmc_btn_b{width: 280px;  line-height: 48px; height:48px; margin-bottom: 16px;}
+    .phone{font-size: 14px;  color:#fff; text-align: center; margin-bottom:16px; span{color:#ff7c5f;} }
+    }
+    
+}
+.gm_prompt{
+    width: 1180px; margin:24px auto 0; overflow: hidden;  background-color: #fff;
+    .step_img{ 
+        overflow: hidden; margin-left: 70px;
+        li{
+            height: 106px;  background:url(../../images/bg_circle.png) no-repeat left center;   line-height: 106px; font-size: 64px; color:$color_g; float: left; width: 310px;
+            i{margin-top: -10px; padding-left: 30px;}
+            &.last_prompt{width: 106px;}
+        }
+    }
+    .prompt_arrow{
+        width: 190px; display:inline-block;  position: absolute; margin-top: 42px; margin-left: 22px;
+        dt{height:10px; background:#fff; width: 190px;}
+        dd.green_line{height:4px; background:$color_g; width: 180px; margin-left: 6px;}
+        dd.gmc_hunt_arrow{
+            float: right; margin-top:-9px; margin-left: 4px;
+        }
+    }
+    .step_text{
+        overflow: hidden; margin-top: 20px; text-align: left;
+        li{width: 250px; float: left; margin-right: 60px; padding-bottom: 30px;   &.last_prompt{margin:0;}}
+        dl{text-align: center}
+        dt{font-size: 20px; color:#333333; margin-bottom: 5px;}
+        dd{
+            font-size: 14px; line-height: 24px; color:#999999;
+        }
+    }    
+}
+.gm_leader{
+    width: 1180px; margin:0 auto 30px;
+    .leader_title{color:#333333; font-size: 28px; text-align: center; line-height: 1; margin:40px 0 ; font-weight: 400;}
+    .leader_list{   
+        width: 1300px; 
+        li{float: left; width: 250px; background:#fff; display:block; margin-right: 60px;} 
+         }
+        .help_btn{width: 108px; height: 30px; border:1px solid $color_g; background-color:#fff; color:$color_g; line-height: 30px; text-align: center; font-size: 14px; display:block; margin:0 auto 30px;
+            &:hover{background-color:$color_g; color:#fff;}
+        }
+    .img_box{ height: 230px; width: 250px; display: table;  text-align: center; 
+        span{height: 230px; display: table-cell;  vertical-align: bottom;  }
+        img{*margin-top: 36px;}
+    }
+    .field{
+        width: 217px; height:63px; background:url(../../images/bg_leader.png) no-repeat center; margin-left:-10px; padding-left: 30px;
+        dl{line-height: 20px; color:#fff; padding-top: 5px;}
+    }
+    .name{color:$color_g; font-size: 18px; margin-bottom: 20px; text-align: center;}
+    .content{width: 210px; font-size: 14px; line-height: 24px; color:#999; margin:0 auto 20px;}
+}

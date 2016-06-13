@@ -1,0 +1,41 @@
+/*
+* @Author: admin
+* @Date:   2016-04-13 14:37:17
+* @Last Modified by:   admin
+* @Last Modified time: 2016-05-11 11:36:05
+*/
+.gm_spread_banner{
+    width: 100%; height:500px; background:url(../../images/spread_banner_bg.png) repeat-x top left; text-align: center;
+    .banner_box{height:499px; width:100%; background:url(../../images/spread_banner.png) no-repeat center;}
+}
+.gm_spread{
+    background:#fff; overflow: hidden;
+    .spread_section_top{
+        width: 1180px; margin:0 auto; overflow: hidden;
+        .img_box{float: left; width: 590px; line-height: 490px;  @include img_center(true); span{@include img_center(false)}}
+        .img_box_two{float: right;} 
+    }
+    .title{font-size: 36px; font-weight: bold; color:#333333; line-height: 1; margin-top: 105px; }
+    .info_first{font-size: 18px; color:#666666;  line-height: 1; margin-top: 20px;}
+    .info_second{font-size: 18px; color:#666666;  line-height: 1; margin-top: 15px;}
+    .btn_title{font-size: 16px; color:#999999; line-height: 1; margin-top: 30px; font-weight: 100;}
+    .page_btn{margin-top: 10px; overflow: hidden; a{float: left; margin-right: 10px;}}
+    .gmc_btn_b{width: 160px; height:46px; line-height: 46px; color:#fff;margin-top: 20px;
+        .gmc_ft_icon{font-size: 22px; margin-left: 20px; }
+    }
+    .spread_info{
+        height: 490px; width: 485px; float: right; padding-left: 105px;
+    }
+    
+    .spread_info_two{float: left; padding-left: 170px; width: 420px;}
+}
+
+.gm_spread_case{
+    background:url(../../images/bg_case.png); height:410px;
+    .case_main{width: 1180px; height: 410px; margin:0 auto; background:url(../../images/bg_case_main.png) no-repeat center; }
+    .title{font-size: 36px; font-weight: bold; color:#fff; text-align: center; line-height: 1; padding-top: 50px;}
+    .spread_logo_list{
+        overflow: hidden; margin-top: 50px; margin-left: 40px;
+        li{width: 160px; height: 130px; background:#fff; border-radius:50%; text-align: center; line-height: 160px; padding-top:30px; float: left; margin-right: 30px; }
+    }
+}  
