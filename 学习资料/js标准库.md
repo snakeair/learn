@@ -266,6 +266,45 @@ obj.print()
 >3. 当前位置（从0开始）
 >4. 原数组
 
+```javascript
+[1, 2, 3, 4, 5].reduce(function(x, y){
+  console.log(x, y)
+  return x + y;
+});
+// 1 2
+// 3 3
+// 6 4
+// 10 5
+//最后结果：15
+```
+
+解析下上面代码，首先在第一次的*x*和*y*是方法前数组的前两个参数，之后再执行的时候*x*表示前一次执行的结果，*y*表示下面一个未执行操作的数组元素。另外**reduce**可以接受第二个参数表示起始数值，像上面的代码如果传入第二个参数*10*的话最后结果就是*25*因为这时候第一次执行的时候*x*表示的就是10。一般情况下，第二个数字是为了防止出现空数组的时候`reduce`报错。
+
+## 链式使用
+
+上面这些数组方法之中，有不少返回的还是数组，所以可以链式使用。
+
+```javascript
+var users = [
+  {name: 'tom', email: 'tom@example.com'},
+  {name: 'peter', email: 'peter@example.com'}
+];
+
+users
+.map(function (user) {
+  return user.email;
+})
+.filter(function (email) {
+  return /^t/.test(email);
+})
+.forEach(alert);
+// 弹出tom@example.com
+```
+
+上面代码中，先产生一个所有Email地址组成的数组，然后再过滤出以`t`开头的Email地址。
+
+
+
 
 
 
