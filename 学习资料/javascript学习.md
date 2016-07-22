@@ -94,5 +94,9 @@ false == null //"false"
 undefined === undefined  "true"
 null === null  //"true"
 null === undefined  //"false"
+NaN == NaN  //"false"
+NaN == null //"false"
+NaN == undefined // "false"
+
 ```
 

@@ -164,6 +164,116 @@ var upper = function (x) {
 
 使用上面的方式我们还可以使用`document.querySelectorAll`方法返回DOM节点集合，
 
+`document.querySelectorAll`返回当前文档中匹配一个特定选择器的所有的元素
+
+```javascript
+var matches = document.querySelectorAll("div.note");
+//表示返回文档中class为note的div元素。
+```
+
+`map`另外一种用法是在一个数组后调用，然后在其中传入函数和另外一个字符串。如果没有字符串的话map会调用函数调整其前面的数组，如果有字符串map会根据前面的字符串调用函数来调整传入的字符串参数。
+
+```javascript
+var arr = ['a', 'b', 'c'];
+
+[1, 2].map(function(e){
+  return this[e];
+}, arr)
+// ['b', 'c']
+
+var f = function(n){ return n + 1 };
+
+[1, undefined, 2].map(f) // [2, NaN, 3]
+[1, null, 2].map(f) // [2, 1, 3]
+[1, , 2].map(f) // [2, , 3]
+```
+
+`map方法不会跳过undefined和null，但是会跳过空位`
+
+### forEach()
+
+`forEach`和`map`类似，只不过forEach没有返回值。
+
+`forEach`方法的参数与`map`方法一致，也是一个函数，数组的所有成员会依次执行该函数。它接受三个参数，分别是当前位置的值、当前位置的编号和整个数组。
+
+```javascript
+var out = [];
+
+[1, 2, 3].forEach(function(elem) {
+  this.push(elem * elem);
+}, out);
+// 1 , 4 , 9
+```
+
+这个方式最后得到的**out**是调整原始数组后的，而如果我们使用`map`的话得到的是一个空置。
+
+上面代码中，空数组`out`是`forEach`方法的第二个参数，结果，回调函数内部的`this`关键字就指向`out`。这个参数对于多层`this`非常有用，因为多层`this`通常指向是不一致的。
+
+```javascript
+var obj = {
+  name: '张三',
+  times: [1, 2, 3],
+  print: function () {
+    this.times.forEach(function (n) {
+      console.log(this.name);
+    });
+  }
+};
+obj.print()  //没有输出
+```
+
+上面代码中，`obj.print`方法有两层`this`，它们的指向是不一致的。外层的`this.times`指向`obj`对象，内层的`this.name`指向顶层对象`window`（详细解释参见《面向对象编程》一章）。这显然是违背原意的，解决方法就是使用`forEach`方法的第二个参数固定`this`。
+
+```javascript
+var obj = {
+  name: '张三',
+  times: [1, 2, 3],
+  print: function () {
+    this.times.forEach(function (n) {
+      console.log(this.name);
+    }, this);
+  }
+};
+
+obj.print()
+// 张三
+// 张三
+// 张三
+```
+
+### filter()
+
+`filter`方法参数是一个函数，所有数组成员以此执行函数，返回`true`的组成一个新数组，该方法不会改变原数组。filter还可以接受第二个参数，第二个参数用来指定**函数的`this`对象**
+
+### some()，every()
+
+这两个方法类似“断言”（assert），用来判断数组成员是否符合某种条件。与上面两个相同，他们也是接受一个函数作为参数，函数也是接受三个参数，依次是当前位置的成员、当前位置的序号和整个数组。
+
+`some`在判断数组的时候只要有一个返回**true**整个数组都返回，否则返回*false*。
+
+`every`则是判断整个数组，所有元素都返回**true**才返回，否则返回*false*。
+
+注意，对于空数组，`some`方法返回`false`，`every`方法返回`true`，回调函数都不会执行。`some`和`every`方法还可以接受第二个参数，用来绑定函数中的`this`关键字。
+
+### reduce()，reduceRight()
+
+`reduce`方法和`reduceRight`方法依次处理数组的每个成员，最终累计为一个值。不同点是，reduce是从左到右，而另外一个则相反。
+
+这两个方法的第一个参数都是一个函数。该函数接受以下四个参数。
+
+>1. 累积变量，默认为数组的第一个成员
+>2. 当前变量，默认为数组的第二个成员
+>3. 当前位置（从0开始）
+>4. 原数组
+
+
+
+
+
+
+
+
+
 
 
 
