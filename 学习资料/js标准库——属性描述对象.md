@@ -77,13 +77,36 @@ var o = Object.defineProperties({}, {
 
 ### 可配置性（configurable）
 
-这个属性是决定我们是否可以修改其所属的对象的各个属性。当*configerable*为*false*的时候，value、writable、enumerable和configurable都不能被修改了。
+这个属性是决定我们是否可以修改其所属的对象的各个属性。当*configerable*为*false*的时候，value、writable、enumerable和configurable都不能被修改了，如果进行修改的话就会报错。
+
+虽然这么说，但是报错并不是100%的。
+
+> 1. `writable`在从true变为false的时候不会报错，但是从false变为true则会报错。  `
+> 2. `value`只需要writable和configurable里面有一个是true，就允许修改。另外在configurable为false的时候直接进行赋值不会报错，但是也不会修改成功
+
+我们在平时使用JS的时候会经常使**var**，在使用var的时候`confugurable默认为false`，而不使用直接var命令的时候则是true。
+
+## Object.getOwnPropertyNames()
+
+再使用`getOwnPropertyNames`的时候，JS会显示出对象的全部属性，不论其是否可以被枚举。
+
+# Object.prototype.propertyIsEnumerable
+
+对象实例的`propertyIsEnumerable`方法用来判断一个属性是否可枚举。
+
+```javascript
+var o = {};
+o.p = 123;
+
+o.propertyIsEnumerable('p') // true
+o.propertyIsEnumerable('toString') // false
+```
+
+# 存取器(accessor)
 
 
 
-
-
-
+除了直接定义，我们可以使用存取器来定义对象属性，在定义的时候我们使用`setter`使用命令`set`，在获取的时候我们使用`getter`使用命令`get`。
 
 
 
