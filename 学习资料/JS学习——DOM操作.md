@@ -413,11 +413,146 @@ var elem = document.forms["myForm"];
 
 ### ChildNode接口
 
+用于处理子节点：*Element*、*documentType*、*CharacterData*接口部署了ChildNode接口。这三类都可以使用一下三种方法，但是目前位置没有浏览器支持后三种：
 
+#### remove
 
+移除当前节点
 
+#### before && after
 
+在当前节点前或者后插入一个同级节点，插入DOM的就是该节点对象；如果参数是文本插入DOM就是参数对应的文本节点。
 
+#### replaceWith
+
+用指定节点替换当前节点。如果参数是节点对象，替换当前节点的就是该节点对象；如果参数是文本，替换当前节点的就是参数对应的文本节点。
+
+## html元素
+
+`html`元素是网页的根元素，`document.documentElement`就指向这个元素。
+
+### clientWidth  &&  clientHeight
+
+返回可视区域的大小
+
+### dataset
+
+`dataset`属性用于操作HTML标签元素的`data-*`属性。下面是一个有`data-*`属性的`div`节点。
+
+```
+<div id="myDiv" data-id="myId"></div>
+
+```
+
+要读取`data-id`属性，可以从当前节点的`dataset.id`属性读取。
+
+```
+var id = document.getElementById("myDiv").dataset.id;
+
+```
+
+要设置`data-id`属性，可以直接对`dataset.id`赋值。如果该属性不存在，将会被新建。
+
+```
+document.getElementById('myDiv').dataset.id = 'hello';
+
+```
+
+删除一个`data-*`属性，可以直接使用`delete`命令。
+
+```
+delete document.getElementById("myDiv").dataset.id;
+
+```
+
+除了`dataset`属性，也可以用`getAttribute('data-foo')`、`removeAttribute('data-foo')`、`setAttribute('data-foo')`、`hasAttribute('data-foo')`等方法操作`data-*`属性。
+
+需要注意的是，`dataset`属性使用骆驼拼写法表示属性名，这意味着`data-hello-world`会用`dataset.helloWorld`表示。而如果此时存在一个`data-helloWorld`属性，该属性将无法读取，也就是说，`data-*`属性本身只能使用连词号，不能使用骆驼拼写法。
+
+### tabindex
+
+用于指定当前html元素节点是否可以被*tab*遍历，以及遍历顺序
+
+```javascript
+var b1 = document.getElementById("button1");
+b1.tabIndex = 1;
+```
+
+如果 *tabindex = -1* ，tab键跳过当前元素。
+
+如果 *tabindex = 0 *，表示tab键将遍历当前元素。如果一个元素没有设置tabindex，默认值就是0。
+
+如果* tabindex* 大于0，表示tab键优先遍历。值越大，就表示优先级越大。
+
+### 页面位置相关属性
+
+>1. offsetParent：当前HTML元素的最靠近的、并且CSS的position属性不等于static的父元素。
+>2. offsetTop：当前HTML元素左上角相对于offsetParent的垂直位移。
+>3. offsetLeft：当前HTML元素左上角相对于offsetParent的水平位移。
+>4. style：读写页面元素行内样式
+
+### Element对象
+
+> 1. querySelector方法
+> 2. querySelectorAll方法
+> 3. getElementsByTagName方法
+> 4. getElementsByClassName方法
+
+上面四个方法只用于选择Element对象的子节点。因此，可以采用链式写法来选择子节点。
+
+```javascript
+document.getElementById('header').getElementsByClassName('a')
+```
+
+#### elementFromPoint
+
+用于选择指定坐标最上层的Element对象
+
+```javascript
+document.elementFromPoint(50,50)
+//选中在坐标（50 50）这个位置的最上层元素
+```
+
+#### html元素相关属性方法
+
+> 1. hasAttribute()：返回一个布尔值，表示Element对象是否有该属性。
+> 2. getAttribute()
+> 3. setAttribute()
+> 4. removeAttribute()
+
+#### matchesSelector
+
+返回一个布尔值，表示Element对象是否符合某个css选择器
+
+```javascript
+document.querySelector('li').matchesSelector('li:first-child')
+```
+
+这个方法需要加上浏览器前缀，需要写成mozMatchesSelector()、webkitMatchesSelector()、oMatchesSelector()、msMatchesSelector()。
+
+#### focus
+
+移动焦点
+
+#### table
+
+> 1. **insertRow()**：在指定位置插入一个新行（tr）。
+> 2. **deleteRow()**：在指定位置删除一行（tr）。
+> 3. **insertCell()**：在指定位置插入一个单元格（td）。
+> 4. **deleteCell()**：在指定位置删除一个单元格（td）。
+> 5. **createCaption()**：插入标题。
+> 6. **deleteCaption()**：删除标题。
+> 7. **createTHead()**：插入表头。
+> 8. **deleteTHead()**：删除表头。
+
+table元素有以下属性：
+
+> 1. **caption**：标题。
+> 2. **tHead**：表头。
+> 3. **tFoot**：表尾。
+> 4. **rows**：行元素对象，该属性只读。
+> 5. **rows.cells**：每一行的单元格对象，该属性只读。
+> 6. **tBodies**：表体，该属性只读。
 
 
 
