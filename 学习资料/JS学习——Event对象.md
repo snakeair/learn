@@ -130,5 +130,137 @@ window.addEventListener('load', doSomething, false);
 
 上面是addEventListener是推荐的指定监听函数的方法。
 
+#### this对象的指向
+
+在实际的编程过程总，监听函数内部的*this*对象，尝尝需要指向触发事件的那个*Element*节点。
+
+*addEventListener*方法指定的监听函数，内部的*this*对象总是指向触发时间的节点。
+
+```javascript
+// HTML代码为
+// <p id="para">Hello</p>
+
+var id = 'doc';
+var para = document.getElementById('para');
+
+function hello(){
+  console.log(this.id);
+}
+
+para.addEventListener('click', hello, false);
+```
+
+指向以上代码的时候，点击`p`会输出*pare*。因为监听函数被“拷贝”成了节点的一个属性。使用下面的写法会看的更清楚。
+
+```javascript
+para.onclick = hello;
+```
+
+但是要注意的是如果监听函数的Element节点的*on-*属性上面，*this*不会指向触发事件的元素节点。因为如果使用*on-*的话执行函数就相当于在全局作用域执行的，如果要解决我们就需要将执行函数直接写在on-上面。但是`不推荐`。
+
+总结一下，以下写法的this对象都指向Element节点。
+
+```javascript
+// JavaScript代码
+element.onclick = print
+element.addEventListener('click', print, false)
+element.onclick = function () {console.log(this.id);}
+
+// HTML代码
+<element onclick="console.log(this.id)">
+```
+
+以下写法的this对象，都指向全局对象。
+
+```javascript
+// JavaScript代码
+element.onclick = function (){ doSomething() };
+element.setAttribute('onclick', 'doSomething()');
+
+// HTML代码
+<element onclick="doSomething()">
+```
+
+## 事件的传播
+
+### 传播的三个阶段
+
+当一个事件发生以后，它会在不同的DOM节点之间传播（propagation）。这种传播分成三个阶段：
+
+> 1. **第一阶段**：从window对象传导到目标节点，称为“捕获阶段”（capture phase）。
+> 2. **第二阶段**：在目标节点上触发，称为“目标阶段”（target phase）。
+> 3. **第三阶段**：从目标节点传导回window对象，称为“冒泡阶段”（bubbling phase）。
+
+这种传播方式有一个问题就是，一个事件可能会在多个节点上触发：触发的节点以及节点的父节点，这种情况被我们称为*冒泡*。
+
+### 事件的代理
+
+
+由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
+
+```javascript
+var ul = document.querySelector('ul');
+
+ul.addEventListener('click', function(event) {
+  if (event.target.tagName.toLowerCase() === 'li') {
+    // some code
+  }
+});
+```
+
+上面就是一个例子，我们把应该绑定在*li*上的`click`事件绑定在了*ul*上面。
+
+而如果我们不需要事件传递上去的话，我们可以使用`stopPropagation`。使用这个方法，事件就会在其触发的节点停止，不会*冒泡*。
+
+## Event对象
+
+事件发生以后，会生成一个事件对象，作为参数传给监听函数。浏览器原生提供一个Event对象，所有的事件都是这个对象的实例，或者说继承了`Event.prototype`对象。
+
+Event对象本身就是一个构造函数，可以用来生成新的实例。
+
+```javascript
+event = new Event(typeArg, eventInit);
+```
+
+Event构造函数接受两个参数。第一个参数是字符串，表示事件的名称；第二个参数是一个对象，表示事件对象的配置。该参数可以有以下两个属性。
+
+> 1. bubbles：布尔值，可选，默认为false，表示事件对象是否冒泡。
+> 2. cancelable：布尔值，可选，默认为false，表示事件是否可以被取消。
+
+```javascript
+var ev = new Event("look", {"bubbles":true, "cancelable":false});
+document.dispatchEvent(ev);
+```
+
+上面代码新建一个look事件实例，然后使用dispatchEvent方法触发该事件。
+
+IE8及以下版本，事件对象不作为参数传递，而是通过window对象的event属性读取，并且事件对象的target属性叫做srcElement属性。所以，以前获取事件信息，往往要写成下面这样。
+
+```javascript
+function myEventHandler(event) {
+  var actualEvent = event || window.event;
+  var actualTarget = actualEvent.target || actualEvent.srcElement;
+  // ...
+}
+```
+
+上面的代码只是为了说明以前的程序为什么这样写，在新代码中，这样的写法不应该再用了。
+
+以下介绍Event实例的属性和方法。
+
+### bubbles , eventphase
+
+这两个属性与事件的阶段有关
+
+**bubbles**
+
+*bubbles*返回的额是一个布尔值，表示当前事件是否会冒泡。
+
+
+
+
+
+
+
 
 
