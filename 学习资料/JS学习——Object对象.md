@@ -220,31 +220,4 @@ type.isNumber(NaN) // true
 type.isRegExp(/abc/) // true
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##END

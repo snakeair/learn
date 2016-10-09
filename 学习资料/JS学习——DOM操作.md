@@ -38,6 +38,7 @@ document.querySelector('a').nodeType === 1
 // true
 document.querySelector('a').nodeType === Node.ELEMENT_NODE
 // true
+
 ```
 
 我们可以看到上面两种方式都可以获得节点的类型，但是相对来说使用`NodeType`会更加方便一些，但是`NodeType`返回的是一个数字，而对于数字则会容易记忆错误，所以在做项目的时候我们可以对每一个值赋予一个英文含义，这样会更加直观。
