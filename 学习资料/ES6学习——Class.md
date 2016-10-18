@@ -534,6 +534,12 @@ console.log(o.attr === true);  // false
 
 上面代码中，`NewObj`继承了`Object`，但是无法通过`super`方法向父类`Object`传参。这是因为ES6改变了`Object`构造函数的行为，一旦发现`Object`方法不是通过`new Object()`这种形式调用，ES6规定`Object`构造函数会忽略参数。
 
+ ![img_02](images\img_02.png)
+
+ ![img_01](images\img_01.png)
+
+上面两个图片是ES5 &&  ES6的继承方式示意图
+
 ## Class的取值和赋值
 
 Class的取值和赋值方式与之前的一样，还是使用`get`来进行处理`set`。
@@ -683,9 +689,90 @@ class Foo {
 
 ## new.target属性
 
- 
+ `new.target`是ES6中的一个新属性，用于检测构造函数是否是使用*new*进行调用的，如果不是会返回*undefined*，如果是则返回构造函数（类）本身。
 
+```javascript
+function Person(name) {
+  if (new.target !== undefined) {
+    this.name = name;
+  } else {
+    throw new Error('必须使用new生成实例');
+  }
+}
 
+// 另一种写法
+function Person(name) {
+  if (new.target === Person) {
+    this.name = name;
+  } else {
+    throw new Error('必须使用new生成实例');
+  }
+}
+
+var person = new Person('张三'); // 正确
+var notAPerson = Person.call(person, '张三');  // 报错
+```
+
+上面的代码是一个简单的例子，另外需要注意的一点是，如果在父类中调用`new.target`的话子类集成之后返回值为子类，
+
+利用这一点我们可以创建一个只能够用于继承的类：
+
+```javascript
+class Shape {
+  constructor() {
+    if (new.target === Shape) {
+      throw new Error('本类不能实例化');
+    }
+  }
+}
+
+class Rectangle extends Shape {
+  constructor(length, width) {
+    super();
+    // ...
+  }
+}
+
+var x = new Shape();  // 报错
+var y = new Rectangle(3, 4);  // 正确
+```
+
+## Mixin模式的实现
+
+Mixin模式指的是，将多个类的接口“混入”（mix in）另一个类。它在ES6的实现如下。
+
+```javascript
+function mix(...mixins) {
+  class Mix {}
+
+  for (let mixin of mixins) {
+    copyProperties(Mix, mixin);
+    copyProperties(Mix.prototype, mixin.prototype);
+  }
+
+  return Mix;
+}
+
+function copyProperties(target, source) {
+  for (let key of Reflect.ownKeys(source)) {
+    if ( key !== "constructor"
+      && key !== "prototype"
+      && key !== "name"
+    ) {
+      let desc = Object.getOwnPropertyDescriptor(source, key);
+      Object.defineProperty(target, key, desc);
+    }
+  }
+}
+```
+
+上面代码的`mix`函数，可以将多个对象合成为一个类。使用的时候，只要继承这个类即可。
+
+```javascript
+class DistributedEdit extends mix(Loggable, Serializable) {
+  // ...
+}
+```
 
 
 
