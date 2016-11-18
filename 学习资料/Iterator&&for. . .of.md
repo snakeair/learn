@@ -70,13 +70,36 @@ function idMaker() {
 
 面的例子中，遍历器生成函数`idMaker`，返回一个遍历器对象（即指针对象）。但是并没有对应的数据结构，或者说，遍历器对象自己描述了一个数据结构出来。
 
+在ES6中，有些数据结构原生具备Iterator接口（比如数组），即不用任何处理，就可以被`for...of`循环遍历，有些就不行（比如对象）。原因在于，这些数据结构原生部署了`Symbol.iterator`属性（详见下文），另外一些数据结构没有。凡是部署了`Symbol.iterator`属性的数据结构，就称为部署了遍历器接口。调用这个接口，就会返回一个遍历器对象。
+
+如果使用TypeScript的写法，遍历器接口（Iterable）、指针对象（Iterator）和next方法返回值的规格可以描述如下。
+
+```javascript
+interface Iterable {
+  [Symbol.iterator]() : Iterator,
+}
+
+interface Iterator {
+  next(value?: any) : IterationResult,
+}
+
+interface IterationResult {
+  value: any,
+  done: boolean,
+}
+```
+
+## 数据结构的Itertor接口
+
+   Iterator接口的目的，就是为所有数据结构，提供了一种统一的访问机制，即`for...of`循环（详见下文）。当使用`for...of`循环遍历某种数据结构时，该循环会自动去寻找Iterator接口。这种数据结构只要部署了Iterator接口，我们就会称为“可遍历的”。
 
 
-   
 
 
 
 
+
+ 
 
 
 
