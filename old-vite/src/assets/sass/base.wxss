@@ -1,0 +1,530 @@
+@charset "UTF-8";
+/*font-size*/
+/*webcolor*/
+/*size*/
+/**
+  *
+  * #333 = b -> 20% #666 -> 40% , #999 -> 60% ,  #ccc -> 80% , #ddd -> 87% ， #eee -> 93%
+  *         以上为常用灰色灰度百分比，酌情使用
+  */
+/**
+ *
+ * 使用  @extend  引入
+ * placeholder code
+ *
+ */
+.common-select .option .option-li, .common-select .show {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.common-slot-edit {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+/**
+ *
+ * function code
+ * 使用 @include 引入
+ *
+ */
+/**
+ * [arrow_askew border三角]
+ * @param  {[type]} $direction [方向]
+ * @param  {[type]} $size      [大小]
+ * @param  {[type]} $color     [颜色]
+ * @return {[type]}            []
+ */
+/**
+ * [css_arrow css3尖角]
+ * @param  {[type]} $height&$width [尖角的长宽]
+ * @param  {[type]} $color         [背景色]
+ * @param  {[type]} $size          [变形的数值]
+ * @return {[type]}     这个使用的是css3的transform和after制作的尖角，可以不是正方形角
+ * 如果需要加上border的话需要在外面添加，但是主要border的宽度
+ */
+/** 
+    网格布局函数，由于书写方式过多，所以由多个函数组成，根据需要使用
+**/
+/** 子模块固定宽度，容器大小随机  **/
+/** 设定容器子元素的长宽 -- start **/
+/**列数**/
+/**行数**/
+/** 设定容器子元素的长宽 -- end **/
+/** 设置子元素的间距 **/
+/** 布局方式 **/
+/** 子元素位置设置， 这个会改变布局，慎用 **/
+.cloud {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0%;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ovh {
+  overflow: hidden;
+}
+
+.shadow, .common-fixed-box {
+  box-shadow: 0 0 8px rgba(149, 171, 204, 0.35);
+}
+
+body {
+  min-height: 100vh;
+}
+
+td,
+th {
+  text-align: center;
+}
+
+*[btn] {
+  cursor: pointer;
+}
+
+.radius, .common-red2-btn, .common-slot-edit .edit-input, .common-slot-edit .edit-btn, .common-slot-edit, .common-get-more, .common-hover, .common-fixed-box .btn, .common-fixed-box, .common-class-btn span.common-check-span, .common-select .option, .common-select {
+  border-radius: 4px;
+}
+
+.common-cricle {
+  display: block;
+  cursor: pointer;
+}
+.common-cricle .common-check-input {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+.common-cricle span.common-big-bun {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  position: relative;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+.common-cricle span.common-small-bun {
+  cursor: pointer;
+  position: absolute;
+  display: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  background: #D9001B;
+  transform: translate(-50%, -50%);
+}
+.common-cricle input.common-check-input:checked ~ .common-big-bun {
+  border: 2px solid #D9001B;
+}
+.common-cricle input.common-check-input:checked ~ .common-big-bun .common-small-bun {
+  display: block;
+}
+
+.common-new {
+  height: 14px;
+}
+.common-new::after {
+  content: "new";
+  display: inline-block;
+  font-size: 12px;
+  height: 14px;
+  line-height: 12px;
+  padding: 0 2px;
+  border-radius: 3px;
+  background-color: #FB717E;
+  color: #FFF;
+}
+
+.common-select {
+  position: relative;
+  box-sizing: border-box;
+  vertical-align: top;
+  cursor: pointer;
+  line-height: 40px;
+  height: 40px;
+  width: 100px;
+  margin-right: 10px;
+  padding: 0 4px 0 10px;
+  background-color: #ECEEF2;
+  color: #7F7F7F;
+}
+.common-select .icon-bottom {
+  line-height: 40px;
+  vertical-align: top;
+  float: right;
+  margin-left: 5px;
+}
+.common-select .show {
+  display: inline-block;
+  width: 64px;
+}
+.common-select .option {
+  position: absolute;
+  overflow-y: auto;
+  z-index: 20;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  padding: 4px 0;
+  max-height: 240px;
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px #E1E6EF;
+}
+.common-select .option .option-li {
+  box-sizing: border-box;
+  line-height: 30px;
+  padding-left: 10px;
+}
+.common-select .option .option-li:hover, .common-select .option .option-li.cur {
+  background-color: #fdf3f4;
+  color: #FB717E;
+}
+
+.common-class-btn {
+  display: block;
+  cursor: pointer;
+}
+.common-class-btn input.common-check-input {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+.common-class-btn span.common-check-span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #ECEEF2;
+}
+.common-class-btn span.common-check-span:hover {
+  background-color: #fdf3f4;
+  color: #FB717E;
+}
+.common-class-btn input.common-check-input:checked ~ .common-check-span {
+  background-color: #FB717E;
+  color: #FFF;
+}
+
+.common-checkbox .input {
+  display: none;
+}
+.common-checkbox .label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid #7F7F7F;
+  background-color: #FFF;
+}
+.common-checkbox .label::before {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  width: 8px;
+  height: 4px;
+  top: 3px;
+  left: 2px;
+  border: 2px solid #A2A7B0;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  opacity: 0;
+}
+.common-checkbox .input:checked + .label {
+  background: #FFF;
+}
+.common-checkbox .input:checked + .label::before {
+  opacity: 1;
+  transform: all 0.5s;
+}
+
+.common-checkbox-bun .input {
+  display: none;
+}
+.common-checkbox-bun .label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  border: 1px solid #A2A7B0;
+  background-color: #FFF;
+}
+.common-checkbox-bun .label::before {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 3px;
+  left: 3px;
+  border-radius: 50%;
+  opacity: 0;
+  background-color: #7F7F7F;
+}
+.common-checkbox-bun .input:checked + .label {
+  background: #FFF;
+}
+.common-checkbox-bun .input:checked + .label::before {
+  opacity: 1;
+  transform: all 0.5s;
+}
+
+.common-fixed-box {
+  box-sizing: border-box;
+  padding: 0 15px 24px;
+  width: 240px;
+  background-color: #FFF;
+}
+.common-fixed-box header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 39px;
+  border-bottom: 1px solid #E1E2E3;
+}
+.common-fixed-box .close {
+  cursor: pointer;
+  font-size: 20px;
+  color: #A2A7B0;
+}
+.common-fixed-box h3 {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+.common-fixed-box section {
+  padding: 10px 0;
+}
+.common-fixed-box section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+.common-fixed-box .btn {
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  color: #FFF;
+  background-color: #FB717E;
+}
+.common-fixed-box .btn:hover {
+  background-color: #F7525C;
+}
+
+.common-search-error {
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px 0;
+  margin-bottom: 10px;
+  height: 170px;
+  background-color: #FFF;
+}
+.common-search-error dl {
+  text-align: center;
+}
+.common-search-error .icon {
+  font-size: 100px;
+  color: rgb(215, 215, 215);
+}
+.common-search-error dd {
+  color: rgb(215, 215, 215);
+}
+
+.common-hover {
+  position: absolute;
+  padding: 6px;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #A2A7B0;
+  color: #FFF;
+}
+
+.common-get-more {
+  text-align: center;
+  width: 160px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  margin: 20px auto 0;
+  border: 1px solid #ECEEF2;
+  color: #7F7F7F;
+}
+.common-get-more:hover {
+  border-color: #A2A7B0;
+}
+
+.common-search-error {
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 10px;
+  background-color: #FFF;
+}
+.common-search-error .icon {
+  font-size: 100px;
+  color: rgb(215, 215, 215);
+}
+.common-search-error .search-txt {
+  line-height: 20px;
+  color: rgb(215, 215, 215);
+}
+
+.common-slot-edit {
+  box-sizing: border-box;
+  width: 240px;
+  padding: 5px 15px 25px;
+  z-index: 10;
+  background-color: #FFF;
+}
+.common-slot-edit .edit-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+  border-bottom: 1px solid #E1E2E3;
+}
+.common-slot-edit .edit-header .name {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 40px;
+}
+.common-slot-edit .edit-header .close {
+  line-height: 40px;
+}
+.common-slot-edit .edit-input, .common-slot-edit .edit-btn {
+  box-sizing: border-box;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  padding-left: 15px;
+  background-color: #F0F2F6;
+  color: #333;
+}
+.common-slot-edit .edit-btn {
+  text-align: center;
+  padding-left: 0;
+  margin-top: 10px;
+  background-color: #FB717E;
+  color: #FFF;
+}
+.common-slot-edit .edit-btn:hover {
+  background-color: #F7525C;
+}
+.common-slot-edit .edit-txt {
+  line-height: 1;
+  margin-top: 10px;
+}
+.common-slot-edit .txt-txt {
+  font-size: 14px;
+  line-height: 18px;
+  color: #333;
+}
+.common-slot-edit .red-txt {
+  color: #FB717E;
+}
+
+.common-speed-list {
+  padding: 20px 0;
+}
+.common-speed-list .common-speed-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  height: 60px;
+}
+.common-speed-list .common-speed-box:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 2px;
+  height: 60px;
+  left: 4px;
+  top: 8px;
+  background-color: #F0F2F6;
+}
+.common-speed-list .common-speed-box:last-of-type:before {
+  display: none;
+}
+.common-speed-list .common-speed-box .left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.common-speed-list .common-speed-box .bun {
+  box-sizing: border-box;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 15px;
+  z-index: 10;
+  margin-top: 4px;
+  border: 1px solid #FB717E;
+  background-color: #FFF;
+}
+.common-speed-list .common-speed-box .name {
+  font-size: 12px;
+  width: 260px;
+  color: #333;
+}
+.common-speed-list .common-speed-box .time {
+  font-size: 12px;
+  color: #A2A7B0;
+}
+.common-speed-list .common-speed-box.cur .bun {
+  background-color: #FB717E;
+}
+.common-speed-list .common-speed-box.cur .name {
+  font-weight: bold;
+  color: #FB717E;
+}
+.common-speed-list .common-speed-box:first-of-type .bun {
+  background-color: #FB717E;
+}
+
+.common-red2-btn {
+  display: block;
+  font-size: 14px;
+  padding: 0 15px;
+  height: 30px;
+  line-height: 30px;
+  color: #FFF;
+  background-color: #FB717E;
+}
+.common-red2-btn:hover {
+  background-color: #F7525C;
+}

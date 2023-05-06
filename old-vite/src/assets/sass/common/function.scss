@@ -1,0 +1,197 @@
+/**
+ *
+ * function code
+ * 使用 @include 引入
+ *
+ */
+
+@mixin fixed($width, $height) {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -1 * $width/2;
+    margin-top: -1 * $height/2;
+    z-index: 10;
+}
+
+@mixin img_center($father:false) {
+    @if $father {
+        display: table;
+        text-align: center;
+    }
+    @else {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+@mixin btn-box($width, $height, $size) {
+    width: $width;
+    line-height: $height;
+    text-align: center;
+    font-size: $size;
+    box-sizing: border-box;
+    display: block;
+}
+
+@mixin inp-box($width, $height, $padding, $size) {
+    width: $width;
+    line-height: $height;
+    padding-left: $padding;
+    font-size: $size;
+    box-sizing: border-box;
+    display: block;
+}
+
+@mixin nav($width, $height, $flex:false) {
+    width: $width;
+    height: $height;
+    margin: 0 auto;
+    overflow: hidden;
+    @if $flex {
+        @extend %flexbox;
+        a {
+            display: block;
+        }
+    }
+    @else {
+        a {
+            float: left;
+            display: block;
+        }
+    }
+}
+
+@mixin new_list ( $width) {
+    width: $width;
+    li {
+        @extend %hold;
+        width: $width;
+    }
+}
+
+
+
+/**
+ * [arrow_askew border三角]
+ * @param  {[type]} $direction [方向]
+ * @param  {[type]} $size      [大小]
+ * @param  {[type]} $color     [颜色]
+ * @return {[type]}            []
+ */
+
+
+/**
+ * [css_arrow css3尖角]
+ * @param  {[type]} $height&$width [尖角的长宽]
+ * @param  {[type]} $color         [背景色]
+ * @param  {[type]} $size          [变形的数值]
+ * @return {[type]}     这个使用的是css3的transform和after制作的尖角，可以不是正方形角
+ * 如果需要加上border的话需要在外面添加，但是主要border的宽度
+ */
+
+@mixin css_arrow( $width, $height, $color, $size) {
+    display: block;
+    width: 1px;
+    height: 1px;
+    transform: scale(1, $size);
+    &:after {
+        content: '';
+        display: block;
+        border-radius: 1px;
+        width: $width;
+        height: $height;
+        transform: rotate(45deg);
+        background: $color;
+    }
+}
+
+@mixin flex($site:center, $item:center) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    @if($site==left) {
+        justify-content: flex-start;
+    }
+    @if ($site==right) {
+        justify-content: flex-end;
+    }
+    @if ($site==center) {
+        justify-content: center;
+    }
+    @if ($site==both) {
+        justify-content: space-between;
+    }
+    @if ($item==top) {
+        align-items: flex-start;
+    }
+    @if ($item==bottom) {
+        align-items: flex-end;
+    }
+    @if ($item==center) {
+        align-items: center;
+    }
+    @if ($item==text) {
+        align-items: baseline;
+    }
+    @if ($item==all) {
+        align-items: stretch;
+    }
+}
+
+/** 
+    网格布局函数，由于书写方式过多，所以由多个函数组成，根据需要使用
+**/
+
+@mixin grid ($justify:stretch, $align:stretch ) {
+  place-items: $justify $align;
+
+}
+
+/** 子模块固定宽度，容器大小随机  **/
+@mixin grid-auto ($size: auto) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $size);
+}
+
+/** 设定容器子元素的长宽 -- start **/
+/**列数**/
+@mixin grid-column ($type, $size...) {
+  display: grid;
+  grid-template-columns: repeat($type, $size);
+}
+/**行数**/
+@mixin grid-rows ($type, $size... ) {
+  display: grid;
+  grid-template-rows: repeat($type, $size);
+}
+/** 设定容器子元素的长宽 -- end **/
+
+/** 设置子元素的间距 **/
+@mixin grid-gap ($width, $height) {
+  grid-gap: $width $height;
+}
+
+/** 布局方式 **/
+@mixin grid-areas ( $type:row, $size...) {
+  grid-auto-flow: $type;
+  grid-template-areas: $size;
+}
+
+/** 子元素位置设置， 这个会改变布局，慎用 **/
+@mixin  grid-child($columnStart, $columnEnd, $rowStart, $rowEnd ) {
+  grid-column: $columnStart / $columnEnd;
+  grid-row: $rowStart / $rowEnd;
+}
+
+
+
+
+
+@mixin holdMore($size) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $size;
+  -webkit-box-orient: vertical;
+}

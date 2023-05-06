@@ -1,0 +1,33 @@
+/**
+ *
+ * 使用  @extend  引入
+ * placeholder code
+ *
+ */
+
+%hold{
+  display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+%shadow{box-shadow:0px 0px 10px rgba(0,0,0,0.6);}
+
+
+
+.clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.ovh {
+  overflow: hidden;
+}
+
+.box1200{
+  width:1200px; margin:0 auto;
+}
+

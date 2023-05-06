@@ -1,0 +1,59 @@
+/*font-size*/
+
+$size: 14px !default;
+
+
+/*webcolor*/
+
+$white: #FFF;
+$bg: #F0F2F6;
+$red1: #D9001B;
+$red1hover: #C40018;
+$red2: #FB717E;
+$red2hover: #fdf3f4;
+$red2hoverbg: #F7525C;
+$green: #4FCC7E;
+$greenhover: #38B36A;
+$orange: #F59A23;
+$orangehover: #F48400;
+$gray: #A2A7B0;;
+$border: #E1E2E3;
+
+$lightred: #FFF1F2;
+$lightgreen:#EEFAF2;
+$lightyellow: #FEF5E9;
+$lightblue: #ECF2FA;
+
+$blue: #4177C8;
+$bluehover: #275AA6;
+$black: #333;
+$blackhover: #D9001B;
+$green: #4FCC7E;
+$yellow: #B2624D;
+
+$txtgray1: #7F7F7F;
+$txtgray2: #AAA;
+
+$link: $blue;
+
+
+/*size*/
+$mini: 30px;
+$small: 34px;
+$zhong: 44px;
+$big: 48px;
+
+$inpbig: 40px;
+$inpzhong: 34px;
+$inpsmall: 30px;
+$inpbg: #ECEEF2;
+$inpcol: #A2A7B0;
+$inpshow: #333;
+$error: rgb(215, 215, 215);
+
+
+/**
+  *
+  * #333 = b -> 20% #666 -> 40% , #999 -> 60% ,  #ccc -> 80% , #ddd -> 87% ， #eee -> 93%
+  *         以上为常用灰色灰度百分比，酌情使用
+  */

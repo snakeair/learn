@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    // 组合模式
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+  },
+  // 这个include 表示他只编译vite.config文件
+  "include": ["vite.config.ts"]
+}

@@ -1,0 +1,10 @@
+.color{
+  color: $red;
+  &.blue{
+    color:blue
+  }
+}
+
+.lh{
+  line-height: 35px;
+}

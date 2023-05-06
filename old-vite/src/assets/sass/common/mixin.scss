@@ -1,0 +1,43 @@
+/**
+ *
+ * 使用  @extend  引入
+ * placeholder code
+ *
+ */
+
+%flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+%hold{
+  display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+%shadow{box-shadow:0px 0px 15px rgba(0,0,0,0.15);}
+
+%hover_show{
+  .show{display: none;}
+  &:hover{
+    .show{display: block;}
+  }
+}
+
+%imgbox{
+    img{width: 100%;}
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+

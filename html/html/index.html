@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="../css/element.css">
+</head>
+
+<body>
+  <div id="app">
+    <div v-loading="loading">
+      <el-button @click="visible = true">Button</el-button>
+      <el-dialog :visible.sync="visible" title="Hello world">
+        <p>Try Element</p>
+      </el-dialog>
+    </div>
+  </div>
+</body>
+<!-- import Vue before Element -->
+<script src="../js/vue.js"></script>
+<!-- import JavaScript -->
+<script src="../js/elementui.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        visible: false,
+        loading: true
+      }
+    },
+    mounted() {
+      let that = this;
+      setTimeout(() => {
+        that.loading = false;
+      }, 3000)
+    },
+  })
+</script>
+
+</html>
