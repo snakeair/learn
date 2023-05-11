@@ -136,19 +136,19 @@ export const toFileFn = (dataurl: string, filename = "file") => {
  */
 let debounceTimer: number | null, throttleTimer: number | null;
 // 防抖
-export const debounceFn = (fn: Function, delay: number): Function => {
+export const deFn = (fn: Function, delay: number): Function => {
   return (...args: unknown[]) => {
     if (debounceTimer) {
       clearTimeout(debounceTimer);
     }
     debounceTimer = setTimeout(() => {
-      fn.apply(this, args);
+      fn.apply(this, args); // 确保引用函数的指向正确，并且函数的参数也不变
     }, delay);
   };
 };
 
 // 节流
-export const throttleFn = (fn: Function, delay: number): Function => {
+export const thrFn = (fn: Function, delay: number): Function => {
   return (...args: unknown[]) => {
     console.log(args);
     if (throttleTimer) {

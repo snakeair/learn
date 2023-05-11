@@ -8,6 +8,7 @@ import Index from './index'
 import About from '@/views/about/index'
 import Menu from '@/components/module/menu'
 import User from '@/views/user/index'
+import HeaderDom from '@/components/class/header'
 
 import cl from './index.module.scss'
 
@@ -27,21 +28,23 @@ const index_index = (props: Props) => {
     setNavList([...navList, data])
   }
 
-
   return (
     <article className={cl.pages} >
       <aside className={cl.asideMain} >  
         <Menu nav={navList}  addLinkFn={addLinkFn} ></Menu>
       </aside>
       <section className={cl.sectionMain} >
+        <div>
+          <header  >
+            <HeaderDom title={'this is class components -- headerBox'} ></HeaderDom>
+          </header>
+          <p>{user.type}</p>
+        </div>
         <Routes>
           <Route path='/' element={<Index/>}  ></Route>
           <Route path='/about' element={<About/>}  ></Route>
           <Route path='/user' element={<User/>}  ></Route>
         </Routes>
-        <div>
-          <p>{user.type}</p>
-        </div>
       </section>
     </article>
   )

@@ -71,48 +71,6 @@ export const sessionFn = (type: string, key: string, value: string = "") => {
   }
 };
 
-/**
- * 防抖函数
- * @param func 执行函数
- * @param delay 延迟时间 ms
- * @param immediate 是否立即执行
- */
-export const debounce = (
-  func: Function,
-  delay: number,
-  immediate: boolean = false
-) => {
-  let timer: number | undefined;
-
-  return function (this: unknown, ...args: any[]) {
-    let that = this;
-    if (immediate) {
-      func.apply(that, args); // 确保引用函数的指向正确，并且函数的参数也不变
-      immediate = false;
-      return;
-    }
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func.apply(that, args);
-    }, delay);
-  };
-};
-
-// 节流
-export const throttle = (fn: Function) => {
-  let timer: number | null; // 首先设定一个变量，没有执行定时器时,默认为 null
-  return function (this: unknown) {
-    if (timer) return; // 当定时器没有执行的时候timer永远是false,后面无需执行
-    let that = this;
-    timer = setTimeout(() => {
-      fn.apply(that, arguments);
-      // 最后在setTimeout执行完毕后再把标记设置为true(关键)
-      // 表示可以执行下一次循环了。
-      timer = null;
-    }, 1000);
-  };
-};
-
 // dataurl 为传进来的base64格式的图片地址， return 返回的为file格式
 export const toFileFn = (dataurl: string, filename = "file") => {
   let arr = dataurl.split(",");

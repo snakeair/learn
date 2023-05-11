@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 
 import cl from  './index.module.scss'
+//
+import  AboutDom  from '@/components/module/aboutDom'
 
 type Props = {}
 
@@ -14,7 +16,6 @@ const index = (props: Props) => {
   setTimeout(() => {
     setBlueFn();
     console.log('blue');
-    
   }, 3000);
 
   const sBlue = {
@@ -22,7 +23,9 @@ const index = (props: Props) => {
   }
 
   return (
-    <div className={`${cl.color} ${cl.lh}`  } style={sBlue} >about</div>
+    <div className={`${cl.color} ${cl.lh}`  } style={sBlue} >
+      <AboutDom></AboutDom>
+    </div>
   )
 }
 
