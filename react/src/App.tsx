@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Routes, Route } from 'react-router-dom'
 
+// 引入 provider 并添加入App
 import { Provider } from 'react-redux/es/exports'
 import store from '@/store/store'
 

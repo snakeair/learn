@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 /**
  * PayloadAction: action的ts声明
+ *
  */
 
 interface tsUser {
@@ -14,6 +15,14 @@ interface tssetUser {
   user: string;
   phone: number | string;
 }
+
+/**
+ *  // NOTE: reateSlice 创建reducer切片
+ *  // NOTE: name 独立id，用于自动生成action中的type
+ *  // NOTE: initialState初始state
+ *  // NOTE: reducers state操作
+ *  // INFO: initial: [ɪˈnɪʃ(ə)l]  初始值
+ */
 
 const userSlice = createSlice({
   name: "user",
@@ -38,5 +47,9 @@ const userSlice = createSlice({
   },
 });
 
+// NOTE : actions为自动从reducers中生成的，
 export const { setUser, setAdmin } = userSlice.actions;
 export const { reducer: userReducer } = userSlice;
+
+// NOTE:  const userCtion = setUser({ user: "jack", phone: "110" }); console.log(userCtion);
+// NOTE:  输出 {type: ${name/函数名}, payload:{...}  }
