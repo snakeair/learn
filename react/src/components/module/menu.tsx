@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
-import cl from './menu.module.scss'
+import './menu.scss'
 import { Button } from 'antd'
 
 type Props = {
@@ -19,16 +19,20 @@ const menu = (props: Props) => {
       label: 'user'
     })
   }
+
+  const curFn = ({isActive}) => {
+    return isActive?"cur link":"link "
+  }
   
 
   return (
-    <div className={cl.menu}>
+    <div className='menu'>
       <span>
       </span>
       <nav  >
         {
           nav.map( (el) => {
-            return  <Link className={cl.link} key={el.link} to={el.link} >{el.label}</Link>
+            return  <NavLink  className={curFn} key={el.link} to={el.link} >{el.label}</NavLink>
           })
         }
       </nav>

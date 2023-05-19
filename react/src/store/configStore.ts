@@ -18,3 +18,5 @@ const configStore = createSlice({
 
 export const { setError } = configStore.actions;
 export const { reducer: configReducer } = configStore;
+// NOTE: 导出configStore的reducer并给他赋一个别名configReducer
+// console.log(configStore);

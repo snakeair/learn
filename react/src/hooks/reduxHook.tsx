@@ -6,6 +6,8 @@ import react ,{useCallback, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import {tsState} from '@/store/store'
 
+// NOTE: useDispatch 钩子函数，获取reduser 派发器的对象
+
 interface argTs {
   [key: string]: any
 }
