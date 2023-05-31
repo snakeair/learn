@@ -1,21 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { tsState } from '@/store/store'
 
-// 模块
-import Index from './index'
-import About from '@/views/about/index'
-import Ids from '@/views/about/ids'
-import User from '@/views/user/index'
-import Other from '@/views/other/other'
-
 import Menu from '@/components/module/menu'
-import HeaderDom from '@/components/class/header'
+
 
 import cl from './index.module.scss'
 
-import RouterDom from '@/router/index'
+import RouterDom from '@/router/router'
 
 type Props = {}
 
@@ -24,7 +17,7 @@ const index_index = (props: Props) => {
 
   const [navList, setNavList] = useState([
     {link: '/', label: 'index'},
-    {link: '/about/1', label: 'about'},
+    {link: '/about', label: 'about'},
     {link: '/other', label: 'other'}
   ])
 
@@ -39,9 +32,7 @@ const index_index = (props: Props) => {
   const location = useLocation()
   const router = useNavigate()
   console.log(location.pathname);
-  if(location.pathname === '/other') {
-    router('/', {replace: true})
-  }
+
   
 
   return (
@@ -50,15 +41,10 @@ const index_index = (props: Props) => {
         <Menu nav={navList}  addLinkFn={addLinkFn} ></Menu>
       </aside>
       <section className={cl.sectionMain} >
-        {/* <div>
-          <header  >
-            <HeaderDom title={'this is class components -- headerBox'} ></HeaderDom>
-          </header>
-          <p>{user.type}</p>
-        </div> */}
-        <Routes>
-          <RouterDom></RouterDom>
-        </Routes>
+        {
+          // NOTE 使用 useRoutes 创建路由文件
+        }
+      <RouterDom></RouterDom>
         {
         // <Routes>
         //   <Route path='/' element={<Index/>}  ></Route>

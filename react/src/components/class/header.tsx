@@ -30,7 +30,7 @@ export default class headerDom extends Component<Props, State> {
   render() {
     return (
       <div style={this.State.headerDom}>
-        <Button onClick={this.clickCountFn} >click</Button>
+        <Button onClick={this.clickCountFn} >click</Button> {this.State.count}
         <div   >{this.props.title}</div>
       </div>
     )

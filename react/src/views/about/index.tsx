@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-import { Route, Routes, Outlet,  } from 'react-router-dom'
-// import {createHashHistory } from 'history'
+import { Route, Routes, Outlet, Link, useNavigate  } from 'react-router-dom'
 import  AboutDom  from '@/components/module/aboutDom'
 import cl from  './index.module.scss'
 import Ids from './ids'
-
+import {Button} from 'antd'
 
 
 type Props = {}
@@ -27,17 +26,21 @@ const index = (props: Props) => {
   
 
   // const history = createHashHistory()
-  
+  const [ids, setIds] = useState(1)
+  const router = useNavigate()
+  const toIdsFn = () => {
+    router(`/about/ids/${ids}`)
+  }
   
   
 
   return (
     <div className={`${cl.color} ${cl.lh}`  } style={sBlue} >
-      <AboutDom></AboutDom>
-      <Routes>
-        <Route path=":id" element={<Ids/>} ></Route>
-      </Routes>
-      {/* <Outlet/> */}
+      <div>
+        <AboutDom></AboutDom>
+      </div>
+      <Button onClick={toIdsFn} >子页面开关</Button>
+      <Outlet/>
     </div>
   )
 }
