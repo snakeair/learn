@@ -1,9 +1,18 @@
 import React, {useState, useEffect, useReducer, useContext, useCallback} from 'react'
 import { Button } from 'antd';
+import {useParams , useSearchParams} from 'react-router-dom'
 import MainContext from '@/context/mainContext';
 
-const aboutDom = () => {
-  console.log('this is aboutDom');
+type Props = {
+}
+
+const aboutDom = (props: Props) => {
+  // NOTE: useParams 用于获取 /about/:id/:name/:age  这种参数，获取到的是一个包含参数和路由的对象
+  // const params = useParams()
+  // console.log(params);
+  // NOTE: 获取当前url 以及 参数
+  
+  
   
   const [bl, setBl] = useState(false);
 

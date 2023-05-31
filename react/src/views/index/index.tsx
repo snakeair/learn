@@ -6,6 +6,9 @@ type Props = {}
 
 
 const index = (props: Props) => {
+
+  console.log('index');
+  
   
   // const data = useLoginMutation({user: '13333333', pwd: '123456'})
 

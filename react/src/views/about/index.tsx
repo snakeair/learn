@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
-
-import cl from  './index.module.scss'
-//
+import { Route, Routes, Outlet,  } from 'react-router-dom'
+// import {createHashHistory } from 'history'
 import  AboutDom  from '@/components/module/aboutDom'
+import cl from  './index.module.scss'
+import Ids from './ids'
+
+
 
 type Props = {}
 
@@ -15,18 +18,28 @@ const index = (props: Props) => {
   }
   setTimeout(() => {
     setBlueFn();
-    console.log('blue');
   }, 3000);
 
   const sBlue = {
     color: blue ? '' : 'blue'
   }
 
+  
+
+  // const history = createHashHistory()
+  
+  
+  
+
   return (
     <div className={`${cl.color} ${cl.lh}`  } style={sBlue} >
       <AboutDom></AboutDom>
+      <Routes>
+        <Route path=":id" element={<Ids/>} ></Route>
+      </Routes>
+      {/* <Outlet/> */}
     </div>
   )
 }
 
-export default index
+export default React.memo(index)

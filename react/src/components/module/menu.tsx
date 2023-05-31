@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 
 import './menu.scss'
@@ -11,6 +11,7 @@ type Props = {
 }
 
 const menu = (props: Props) => {
+
   const {nav, addLinkFn} = props
   
   const setLinkFn = () => {
@@ -24,12 +25,19 @@ const menu = (props: Props) => {
     return isActive?"cur link":"link "
   }
   
+  const router = useNavigate()
+  const toIndexFn = () => {
+    // NOTE: replace  替换当前页面路由信息, state路由参数
+    // router('/login', {replace: true})
+    router('/login', { state: {from: 'menu', name: 'jack'}})
+  }
+
+
 
   return (
     <div className='menu'>
-      <span>
-      </span>
-      <nav  >
+      <span className='logo' onClick={toIndexFn}  >logo</span>
+      <nav>
         {
           nav.map( (el) => {
             return  <NavLink  className={curFn} key={el.link} to={el.link} >{el.label}</NavLink>
