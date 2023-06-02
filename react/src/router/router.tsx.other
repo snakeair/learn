@@ -1,0 +1,117 @@
+import React, {Suspense, lazy, useEffect} from 'react'
+const Index = lazy( () => import('@/views/index') )
+const User = lazy( () => import('@/views/user') )
+const Other = lazy( () => import('@/views/other/other') )
+const About = lazy( () => import('@/views/about/index'))
+
+import {
+  useLocation,
+  useRoutes,
+  Location,
+  useNavigate,
+  NavigateFunction,
+} from "react-router-dom";
+// import { message } from "antd";
+
+interface RouteObject {
+  caseSensitive?: boolean;
+  children?: RouteObject[];
+  element?: React.ReactNode;
+  index?: boolean;
+  path?: string;
+  auth?: boolean;
+}
+
+
+
+//递归查询对应的路由
+export function searchroutedetail(
+  path: string,
+  routes: RouteObject[]
+): RouteObject | null {
+  for (let item of routes) {
+    if (item.path === path) return item;
+    if (item.children) {
+      return searchroutedetail(path, item.children);
+    }
+  }
+  return null;
+}
+
+//全局路由守卫
+function guard(
+  location: Location,
+  navigate: NavigateFunction,
+  routes: RouteObject[]
+) {
+  const { pathname } = location;
+
+  //找到对应的路由信息
+  const routedetail = searchroutedetail(pathname, routes);
+  
+
+  //没有找到路由，跳转404
+  if (!routedetail) {
+    // navigate("/404");
+    return false;
+  }
+  
+  console.log(pathname);
+  
+  if(location.pathname === '/') {
+    navigate('/other')
+  }
+
+  //如果需要权限验证
+  if (routedetail.auth) {
+    const token = localStorage.getItem("jiang_blog_token");
+    if (!token) {
+      console.log('login');
+      navigate(-1);
+      return false;
+    }
+  }
+  return true;
+}
+
+export const RouterGurad = (routes: RouteObject[]) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+    guard(location, navigate, routes);
+  // document.documentElement.scrollTo(0, 0);
+  const Views=() => useRoutes(routes as any);
+  return Views;
+};
+
+
+
+
+type Props = {}
+
+const index = (props: Props) => {
+
+  let routes: RouteObject[] = [
+  {  
+    path: "/", 
+    element:  <Suspense><Index></Index> </Suspense> ,
+  },
+  { 
+    path: 'user', 
+    element: <Suspense><User></User> </Suspense>,
+  },
+  { 
+    path: 'other', 
+    element: <Suspense><Other></Other> </Suspense>,
+  },
+  { 
+    path: 'about', 
+    element: <Suspense><About></About> </Suspense>,
+  },
+]
+  const Views = RouterGurad(routes)
+  return (
+    <Views></Views>
+  )
+}
+
+export default index

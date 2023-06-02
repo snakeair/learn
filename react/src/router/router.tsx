@@ -18,10 +18,6 @@ export interface SyncRoute {
 // NOTE: 懒加载
 // NOTE: lazy是react的一个api，用于说明这个模式是懒加载
 // NOTE: Suspense 挂起请求
-const lazyLoad = (src:any) => {
-  const Preview = lazy(() => import(src));
-  return <Suspense fallback={<>...</>}><Preview /></Suspense>
-};
 
 
 const router = () => {
@@ -29,11 +25,21 @@ const router = () => {
   const router = useNavigate();
   const location = useLocation();
 
-  if(location.pathname === '/other') {
-      console.log('router');
+  
+  const lazyLoad = (src:any) => {
+     /* @vite-ignore */
+    const Preview = lazy(() => import(src));
+    return <Suspense  fallback={<>...</>}><Preview /></Suspense>
+  };
+
+  // NOTE: 路由拦截
+  const beforeEachFn = () => {
+    if(location.pathname === '/other') {
+      console.log('beforeEach');
       router('/' )
     }
-
+  }
+  beforeEachFn();
 
   let routes: RouteObject[] = [
     {  

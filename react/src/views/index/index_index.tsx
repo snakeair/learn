@@ -31,7 +31,6 @@ const index_index = (props: Props) => {
 
   const location = useLocation()
   const router = useNavigate()
-  console.log(location.pathname);
 
   
 
