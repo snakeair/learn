@@ -60,7 +60,7 @@ export default defineConfig({
     //代理
     proxy: {
       "/api": {
-        target: "http://www.weather.com.cn", // 后台服务地址
+        target: "https://storebase.hnyiye.com/", // 后台服务地址
         changeOrigin: true, // 是否允许不同源
         secure: false, // 支持https
         rewrite: (path) => path.replace(/api/, ""),

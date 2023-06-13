@@ -167,13 +167,3 @@ th{
 // }
 
 
-.layer{
-  position: fixed; box-sizing: border-box;
-  border-radius: 4px; left:50%; top:50%;  z-index:110;
-  background-color: $white; 
-  transform: translate(-50% , -50%);
-  .close{
-    float: right; 
-    font-size: 16px; padding:10px;
-  }
-}

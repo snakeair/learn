@@ -2,6 +2,7 @@
   "name": "vitets",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite --mode dev",
     "build": "vite build --mode develop",
