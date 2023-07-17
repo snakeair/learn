@@ -6,7 +6,7 @@ import pinia from "./store/store";
 
 
 import '@/assets/sass/reset.scss'
-
+import 'animate.css';
 // vant css
 import 'vant/lib/index.css';
 
