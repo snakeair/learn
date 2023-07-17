@@ -1,0 +1,135 @@
+// *{
+//   overflow: overlay !important;
+// }
+body,button,input,select,textarea{font-family:Tahoma,Helvetica,"Microsoft YaHei",Arial,sans-serif; color:#666;}
+
+*,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+th,
+td,
+p,
+blockquote,
+pre,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+article,
+aside,
+footer,
+header,
+hgroup,
+nav,
+section,
+menu,
+figure,
+figcaption,
+dialog {
+  margin: 0;
+  padding: 0;
+vertical-align:baseline; line-height: 1.5; font-size: 14px;
+}
+html, body{
+    overflow-x: hidden;
+}
+
+table{border-collapse:collapse;border-spacing:0;}
+
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+
+li{list-style:none;}
+
+fieldset,img,dialog{border:0;vertical-align:middle;}
+
+input,textarea{outline-style:none;}
+
+textarea{resize:none;}
+
+article,aside,footer,header,hgroup,nav,section,menu{display:block;}
+
+address,caption,cite,code,dfn,th,var, em, i , b{font-style:normal;font-weight:400;}
+
+a{text-decoration:none;outline:none; color:#666;}
+
+a:hover{text-decoration:none; color:#1753c1}
+
+button, input{ border:none; }
+
+//number框箭头
+
+//disabled
+$disabled: #bbb;
+input[disabled='disabled']::-webkit-input-placeholder {
+    color:$disabled;
+}
+ input[disabled='disabled']::-moz-placeholder {
+    color:$disabled;
+}
+input[disabled='disabled']:-ms-input-placeholder {
+    color:$disabled;
+}
+
+//移动端input 内投影
+// input,
+// textarea {
+//     border: 0; /* 方法1 */
+//     -webkit-appearance: none; /* 方法2 */
+// }
+
+$placeholder: #bbb;
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {   
+   color: $placeholder;   
+   }   
+input:-moz-placeholder, textarea:-moz-placeholder {   
+   color: $placeholder;   
+}   
+input::-moz-placeholder, textarea::-moz-placeholder {   
+   color: $placeholder;   
+}   
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {   
+   color: $placeholder;   
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+width: 12px;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+border-radius:10px;
+background:rgba(0,0,0,0.3);
+-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background:rgba(30, 100, 230,0.8);
+}

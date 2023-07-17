@@ -1,0 +1,187 @@
+// 公共
+body {
+  min-height: 100vh;
+}
+
+*[btn],
+.btn{
+  cursor: pointer;
+}
+
+td,
+th{
+  text-align: center ;
+}
+
+.cloud{
+  position: fixed;
+  width: 100%; height: 100%; left:0%; top:0%; z-index:100;
+  background: rgba(0, 0, 0, 0.6)
+}
+
+.img-box{
+  @include flex(center);
+  img{
+    display: block;
+    width:100%;
+  }
+}
+
+
+
+.shadow {
+  box-shadow: 0 0 8px rgba(149, 171, 204, 0.35);
+}
+
+
+.radius{
+  border-radius: 4px;
+}
+
+.common-layer{
+  @extend .shadow;
+  position: fixed;
+  left:50%; top:50%; z-index:110;
+  transform: translate(-50%, -50%);
+}
+
+
+// 文字按钮样式
+.common_blue{
+  display: inline-block; 
+  padding:0 10px; font-size: 12px;
+  color:$blue;
+  &:hover{
+    color:darken($blue, 10%)
+  }
+}
+
+.common_red{
+  display: inline-block; 
+  padding:0 10px; font-size: 12px;
+  color:$red;
+  &:hover{
+    color:darken($red, 10%)
+  }
+}
+
+// 按钮样式
+.common-link{
+  display: inline-block;
+  padding: 8px 12px; line-height: 1; font-size: 14px; border-radius: 4px;
+  background-color: $white; color:$blue;
+  &:hover{
+    color:darken($blue, 20%);
+  }
+}
+
+
+
+
+// 多选默认样式修改  --  对勾
+.common-checkbox{
+  .input {
+    display: none;
+  }
+  .label {
+    display: inline-block; position: relative; cursor: pointer;
+    width: 14px; height: 14px; border-radius: 4px;
+    border: 1px solid gray; background-color: $white;
+  }
+  .label::before {
+    content: " ";
+    display: inline-block; position: absolute;
+    width: 8px; height: 4px; top: 3px; left: 2px;
+    border: 2px solid $red;  border-top: none;  border-right: none;
+    transform: rotate(-45deg); opacity: 0;
+  }
+  .input:checked+.label {
+    background: $white; border-color:$red;
+  }
+  .input:checked+.label::before{
+    opacity: 1;  transform: all 0.5s;
+  }
+}
+
+// 多选默认样式修改  --  圆
+.common-checkbox-bun{
+  .input {
+    display: none;
+  }
+  .label {
+    display: inline-block; position: relative; cursor: pointer;
+    width: 14px; height: 14px; border-radius: 7px;
+    border: 1px solid #999; background-color: $white;
+  }
+  .label::before {
+    content: " ";
+    display: inline-block; position: absolute;
+    width: 8px; height: 8px; top: 3px; left: 3px; border-radius: 50%;
+    opacity: 0; background-color: gray;
+  }
+  .input:checked+.label {
+    background: $white;
+  }
+  .input:checked+.label::before{
+    opacity: 1;  transform: all 0.5s;
+  }
+}
+
+// 多选默认样式修改 -- 只有文字
+.common-checkbox-txt{
+  display: block; cursor: pointer;
+  .input{
+    position: absolute;
+    left:-999px; z-index:-999;
+  }
+  .label{
+    @extend .radius;
+    display: block;
+    width:30px; height:30px; line-height: 30px; text-align: center;
+    background-color: $white;
+    &:hover{
+      background-color: $red; color:$red;
+    }
+  }
+  .input:checked ~ .label{
+    background-color: $red; color:$white;
+  }
+}
+
+
+
+
+
+
+
+.layer{
+  position: fixed; box-sizing: border-box;
+  border-radius: 4px; left:50%; top:50%;  z-index:110;
+  background-color: $white; 
+  transform: translate(-50% , -50%);
+  .layer-header{
+    overflow: hidden;
+  }
+  .close{
+    float: right; 
+    font-size: 16px;  padding-top: 10px; padding-right: 10px;
+  }
+}
+
+
+// 项目独立样式
+// .common-icon{
+//   display: inline-block; vertical-align: middle;
+//   width:50px; height:50px; margin-bottom: -1px;
+//   background-image: url("@/assets/images/icon-common.png");
+//   background-repeat: no-repeat;
+//   background-position: 0 0;
+// }
+
+// .common-title{
+//   font-weight: bold;
+//   font-size: 16px; line-height: 1; padding:30px 0 18px;  margin-bottom: 30px;
+//   color:#333;
+//   border-bottom:1px solid $border;
+// }
+

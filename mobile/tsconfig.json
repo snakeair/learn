@@ -1,0 +1,41 @@
+// 主 ts文件
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    // 添加要包含的类型声明文件名列表，只有在这里列出的模块的声明文件才会被加载进来
+    "types": ["vite/client", "element-plus/global"],
+    // 不检查第三方库的文件类型
+    // "skipDefaultLibCheck": true,
+    // 根目录已经引用目录与vite.config一样
+    "baseUrl": "./",
+    // ts类型声明的文件列表
+    "typeRoots": ["node_modules/@types", "./types/*"],
+    "paths": {
+      "@/*": ["src/*"],
+      "views/*": ["src/views/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"],
+      "#/*": ["types/*"],
+      "card": ["src/cart/*"]
+    },
+    
+  },
+  // 需要编译的文件以及文件类型
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.ts", "types/**/*.d.ts"],
+  // 不需要编译的文件
+  "exclude": ["dist", "node_modules"],
+  // 引入拆分的ts控制文件
+  // references属性是 TypeScript 3.0 的新特性，允许将 TypeScript 程序拆分结构化, 避免了在一个文件中处理过多的内容，而是通过拆分成多个文件，分别配置不同的部分，达到更加清晰，可维护性更高的目的。
+  "references": [{ "path": "./tsconfig.node.json" }],
+}

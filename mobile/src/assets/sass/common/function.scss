@@ -1,0 +1,129 @@
+/**
+ *
+ * function code
+ * 使用 @include 引入
+ *
+ */
+
+
+@mixin btn-box($width, $height, $size, $lh: auto) {
+    text-align: center;
+    box-sizing: border-box;
+    width: $width;
+    line-height: $height;
+    font-size: $size;
+    display: block;
+}
+
+@mixin inp-box($width, $height, $padding, $size) {
+    display: block;
+    box-sizing: border-box;
+    width: $width;
+    line-height: $height;
+    padding-left: $padding;
+    font-size: $size;
+}
+
+
+@mixin new_list ( $width) {
+    width: $width;
+    .li {
+        @extend %hold;
+        width: 100%;
+    }
+}
+
+
+/**
+ * [css_arrow css3尖角]
+ * @param  {[type]} $height&$width [尖角的长宽]
+ * @param  {[type]} $color         [背景色]
+ * @param  {[type]} $size          [变形的数值]
+ * @return {[type]}     这个使用的是css3的transform和after制作的尖角，可以不是正方形角
+ * 如果需要加上border的话需要在外面添加，但是主要border的宽度
+ */
+
+@mixin flex($site:center, $item:center, $flex: false) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    @if($site==left) {
+        justify-content: flex-start;
+    }
+    @if ($site==right) {
+        justify-content: flex-end;
+    }
+    @if ($site==center) {
+        justify-content: center;
+    }
+    @if ($site==both) {
+        justify-content: space-between;
+    }
+    @if ($item==top) {
+        align-items: flex-start;
+    }
+    @if ($item==bottom) {
+        align-items: flex-end;
+    }
+    @if ($item==center) {
+        align-items: center;
+    }
+    @if ($item==text) {
+        align-items: baseline;
+    }
+    @if ($item==all) {
+        align-items: stretch;
+    }
+    @if($flex){
+        flex-direction: row-reverse;
+    }
+}
+
+
+
+
+
+
+@mixin holdMore($size) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $size;
+  -webkit-box-orient: vertical;
+}
+
+
+/* 设备尺寸 */
+$phone_width: 750;
+$pad_width: 1536;
+
+/* 媒体查询 */
+@mixin pc {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin pad {
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+      @content;
+  }
+}
+
+@mixin phone {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@function vw($px) {
+  @return calc( ($px / $phone_width) * 100vw);
+}
+
+@function pad($px) {
+  @return calc( ($px / $pad_width) * 100vw);
+}
+
+@function  size($px) {
+  @return calc( ($px / 100) * 1rem);
+}
