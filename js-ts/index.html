@@ -3,47 +3,40 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    .box1 {
-      width: 80vw;
-      margin: 0 auto;
-      height: 100vh;
-      padding-bottom: 50vh;
-      background: url('./1.jpg') no-repeat center top /100%;
-      background-attachment: fixed;
-    }
-
-    .box2 {
-      width: 80vw;
-      margin: 0 auto;
-      height: 100vh;
-      padding-bottom: 50vh;
-      background: url('./2.jpg') no-repeat center /100%;
-      background-attachment: fixed;
-    }
-
-    .box3 {
-      width: 80vw;
-      margin: 0 auto;
-      height: 100vh;
-      padding-bottom: 50vh;
-      background: url('./3.jpg') no-repeat center bottom /100%;
-      background-attachment: fixed;
-    }
-  </style>
 </head>
-<div class="box1"></div>
-<div class="box2"></div>
-<div class="box3"></div>
 
 <body>
+  <p>这是一段默认被选中的文本1</p>
+  <p>这是一段默认有开始截止位置的文本3</p>
+  <div>
+    <span>太阳当空照，<br></span>
+    <span>花儿对我笑。<br></span>
+    <span>小鸟说：“早，早，早，<br></span>
+    <span>你为什么背上小书包？”<br></span>
+    <span>我去上学校，<br></span>
+    <span>天天不迟到。<br></span>
+    <span>爱学习，爱劳动，<br></span>
+    <span>长大要为祖国立功劳。<br></span>
 
-  <script src="./resize-ali.js"></script>
-  <script src="./js.js"></script>
+    <button onclick="myFunction()">Click me</button>
+  </div>
 
+  <script>
+    function myFunction() {
+      console.log(1);
+      //选中一段文字
+      var range = document.createRange();
+      referenceNode = document.getElementsByTagName("p").item(1);
+      console.log(referenceNode)
+      range.selectNodeContents(referenceNode);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range)
+    }
+
+  </script>
 </body>
 
 </html>
