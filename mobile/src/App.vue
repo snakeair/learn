@@ -12,7 +12,7 @@ window.addEventListener('resize', function () {
   config.getDevSizeFn()
 })
 
-console.log(import.meta.env)
+console.log(import.meta.env.VITE_ENV)
 
 </script>
 

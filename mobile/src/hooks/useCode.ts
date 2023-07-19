@@ -5,26 +5,26 @@ export default function useCode(
   end: number = 1,
   time: number = 1000
 ) {
-  const codeH = ref<number>();
-  const codeTimerH = ref<number>(start);
-  const codeShowH = ref<boolean>(false);
+  const code = ref<number>();
+  const codeTimer = ref<number>(start);
+  const codeShow = ref<boolean>(true);
 
-  const codeFnH = (): void => {
-    codeShowH.value = !codeShowH.value;
+  const codeFn = (): void => {
+    codeShow.value = !codeShow.value;
     let timer: number = setInterval(() => {
-      if (codeTimerH.value > end) {
-        codeTimerH.value--;
+      if (codeTimer.value > end) {
+        codeTimer.value--;
       } else {
-        codeTimerH.value = start;
-        codeShowH.value = !codeShowH.value;
+        codeTimer.value = start;
+        codeShow.value = !codeShow.value;
         clearInterval(timer);
       }
     }, time);
   };
   return {
-    codeTimerH,
-    codeShowH,
-    codeFnH,
-    codeH,
+    codeTimer,
+    codeShow,
+    codeFn,
+    code,
   };
 }
