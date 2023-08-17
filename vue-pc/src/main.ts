@@ -5,7 +5,7 @@ import router from "./router";
 
 import ElementPlus from "element-plus";
 
-import "./assets/element.css";
+import "@/assets/sass/element.scss";
 
 const app = createApp(App);
 

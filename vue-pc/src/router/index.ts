@@ -1,14 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-
-import frame from '@/layouts/default.vue'
+import frame from "@/layouts/default.vue";
 //页面
 import index from "@/views/index.vue";
-
-
-import pinia from "stores/store";
-import {configStore} from "stores/config";
-const config = configStore(pinia);
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,9 +16,6 @@ const routes: Array<RouteRecordRaw> = [
         path: "/index",
         name: "index",
         component: index,
-        meta: {
-          title: config.title
-        }
       },
       // 个人信息
     ],
@@ -47,7 +38,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to: any, from, next) => {
-  document.title = to.meta.title
+  document.title = to.meta.title;
   if (to.path == "/login" && from.path != "/index") {
     if (from.path != "/index" && !to.query.back) {
       next({
