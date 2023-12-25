@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>红包助力</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) {
+            return;
+          } else {
+            if (clientWidth > 750) clientWidth = 750;
+            docEl.style.fontSize = clientWidth / 7.5 + "px"; // 设计稿设计宽度计算 加入640px 则 640/100=6.4 然后设计稿中的css标注都除以100来用rem height:210px= heigth:2.1rem
+          }
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener("DOMContentLoaded", recalc, false);
+
+    })(document, window);
+
+  </script>
+</body>
+
 </html>

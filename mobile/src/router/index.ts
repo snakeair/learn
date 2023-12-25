@@ -16,10 +16,9 @@ const routes: Array<RouteRecordRaw> = [
     name: "index",
     component: index,
     meta: {
-      title: "拍易贷",
+      // title: "红包助力",
     },
   },
-  
 ];
 
 const router = createRouter({
@@ -30,7 +29,9 @@ const router = createRouter({
 });
 
 router.beforeEach((to: any, from, next) => {
-  document.title = to.meta.title;
+  if (to.meta.title && to.meta.title !== "") {
+    document.title = to.meta.title;
+  }
 
   let channel = from.query.channel;
 

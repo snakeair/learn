@@ -1,32 +1,45 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from "node:url";
 
-import { defineConfig,loadEnv, ConfigEnv  } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite';
-import { VantResolver } from 'unplugin-vue-components/resolvers';
+import { defineConfig, loadEnv, ConfigEnv } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { createHtmlPlugin } from "vite-plugin-html";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { VantResolver } from "unplugin-vue-components/resolvers";
 import { resolve } from "path";
 
 let pathUrl = (url: string) => {
   return resolve(__dirname, url);
 };
 
-// https://vitejs.dev/config/
 export default ({ mode }) => {
-  const env = loadEnv(mode, process.cwd());
-  console.log(env.VITE_ENV);
-   return defineConfig({
+  const env = loadEnv(mode, process.cwd(), "");
+  console.log(env.VITE_ENV, "cinfog");
+
+  return defineConfig({
     base: "./", // 设置公共基础路径
     plugins: [
       vue(),
       AutoImport({
-        imports: ["vue"]
+        imports: ["vue"],
+        // 可以选择auto-import.d.ts生成的位置，使用ts建议设置为'src/auto-import.d.ts'
+        dts: "src/auto-import.d.ts",
       }),
       Components({
         resolvers: [VantResolver()],
+        // 配置文件生成位置
+        dts: "components/components.d.ts",
+      }),
+      createHtmlPlugin({
+        inject: {
+          data: {
+            ...env,
+            injectScript: `<script src="./other.js"></script>`,
+          },
+        },
       }),
     ],
-     //启动端口
+    //启动端口
     server: {
       port: 4000, // 设置服务启动端口号，如果端口已经被使用，Vite 会自动尝试下一个可用的端口
       open: false, // boolean | string 设置服务启动时是否自动打开浏览器，当此值为字符串时，会被用作 URL 的路径名
@@ -35,7 +48,7 @@ export default ({ mode }) => {
       //代理
       proxy: {
         "/api": {
-          target: "https://114.55.56.117", // 后台服务地址
+          target: "http://ytadmin-test.tmap.com.cn:8002", // 后台服务地址
           changeOrigin: true, // 是否允许不同源
           secure: false, // 支持https
           rewrite: (path) => path.replace(/api/, ""),
@@ -94,5 +107,5 @@ export default ({ mode }) => {
       },
       chunkSizeWarningLimit: 500, // chunk 大小警告的限制（以 kbs 为单位）
     },
-  })
- }
+  });
+};

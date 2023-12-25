@@ -1,0 +1,38 @@
+{
+  "name": "vue-pc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --mode dev",
+    "build": "vite build --mode develop",
+    "pro": "vite build --mode production",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "axios": "^1.4.0",
+    "element-plus": "^2.3.9",
+    "js-cookie": "^3.0.5",
+    "pinia": "^2.1.4",
+    "pinia-plugin-persistedstate": "^3.2.0",
+    "qs": "^6.11.2",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.0",
+    "@types/node": "^18.17.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/tsconfig": "^0.4.0",
+    "consola": "^3.2.3",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.64.2",
+    "typescript": "~5.1.6",
+    "unplugin-auto-import": "^0.16.6",
+    "unplugin-vue-components": "^0.25.1",
+    "vite": "^4.4.6",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-style-import": "^2.0.0",
+    "vue-tsc": "^1.8.6"
+  }
+}
