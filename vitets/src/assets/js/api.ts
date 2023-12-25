@@ -1,8 +1,8 @@
 import axios from "axios";
 import qs from "qs";
 import cookie from "js-cookie";
-import $message from "@/cart/message/index";
-import { resolve } from "path";
+import { ElMessage } from "element-plus";
+
 
 let url = window.location.href;
 
@@ -45,7 +45,6 @@ function removePendingRequest(config: reqTs) {
 
 let header = {
   apikey: apikey,
-  Authorization: cookie.get("authorization"),
   "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 };
 const instance = axios.create({
@@ -69,6 +68,9 @@ instance.interceptors.request.use(
 //响应拦截器
 instance.interceptors.response.use(
   (response) => {
+    if (cookie.get('token')) {
+			response.headers!['Authorization'] = `${cookie.get('token')}`;
+		}
     if (response.status === 200) {
       return Promise.resolve(response.data);
     } else {
@@ -80,9 +82,7 @@ instance.interceptors.response.use(
     removePendingRequest(error.config || {}); // 从pendingRequest对象中移除请求
     if (axios.isCancel(error)) {
       console.log("已取消的重复请求：" + error.message);
-      $message({
-        msg: "请不要多次请求",
-      });
+      ElMessage.error( "请不要多次请求",);
     } else {
       // 添加异常处理
     }

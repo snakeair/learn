@@ -114,7 +114,7 @@ export const throttle = (fn: Function) => {
 };
 
 // dataurl 为传进来的base64格式的图片地址， return 返回的为file格式
-export const toFileFn = (dataurl: string, filename = "file") => {
+export const toFileFn = (dataurl: string, filename:string) => {
   let arr = dataurl.split(",");
   let mime = arr[0].match(/:(.*?);/)![1];
   let suffix = mime.split("/")[1];
@@ -129,34 +129,9 @@ export const toFileFn = (dataurl: string, filename = "file") => {
   });
 };
 
-/***
- *  func 需要执行的方法
- *  time 间隔时间
- *  immediate 是否立即执行 —— 即是否是有防抖
- */
-let debounceTimer: number | null, throttleTimer: number | null;
-// 防抖
-export const deFn = (fn: Function, delay: number): Function => {
-  return (...args: unknown[]) => {
-    if (debounceTimer) {
-      clearTimeout(debounceTimer);
-    }
-    debounceTimer = setTimeout(() => {
-      fn.apply(this, args); // 确保引用函数的指向正确，并且函数的参数也不变
-    }, delay);
-  };
-};
 
-// 节流
-export const thrFn = (fn: Function, delay: number): Function => {
-  return (...args: unknown[]) => {
-    console.log(args);
-    if (throttleTimer) {
-      return;
-    }
-    throttleTimer = setTimeout(() => {
-      fn.apply(this, args);
-      throttleTimer = null;
-    }, delay);
-  };
-};
+type element = HTMLElement
+// NOTE block 窗口对齐位置，start上 end 下 center 中间
+export const scrollToTop = (element : element, line?: 'start' ) => {
+  element.scrollIntoView({ behavior: "smooth", block: line });
+}

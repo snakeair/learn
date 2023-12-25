@@ -1,14 +1,18 @@
 import axios, { AxiosInstance } from 'axios';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import cookie from 'js-cookie';
 import qs from 'qs';
 
+interface params {
+	[key: string]: any
+}
 // 配置新建一个 axios 实例
 const service: AxiosInstance = axios.create({
 	baseURL: import.meta.env.VITE_API_URL,
 	timeout: 50000,
 	headers: { 'Content-Type': 'application/json' },
 	paramsSerializer: {
-		serialize(params) {
+		serialize (params:params)  {
 			return qs.stringify(params, { allowDots: true });
 		},
 	},

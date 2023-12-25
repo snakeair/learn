@@ -30,7 +30,7 @@ export default ({ mode }) => {
         inject: {
           data: {
             ...env,
-            injectScript: `<script type="module" src="./public/base.js"></script>`,
+            injectScript: `<script type="module" src="/base.js"></script>`,
           },
         },
       }),

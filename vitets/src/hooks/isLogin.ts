@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import cookie from "js-cookie";
-import { $get } from "@/assets/js/axios";
+import { $get } from "@/assets/js/api";
 import pinia from "@/store/store";
 import { indexStore } from "@/store/index";
 const store = indexStore(pinia);
@@ -20,8 +20,6 @@ export default function isLogin() {
   };
   // 获取个人信息
   const getLoginInfoFnH = () => {
-    let url = `/api.php/member/info`;
-    $get(url).then((res: any) => {});
   };
 
   return {

@@ -1,16 +1,11 @@
 import { ref } from "vue";
 
-interface typeTime {
-  fn: () => void;
-  time: number;
-}
-
-export default function timer() {
-  const timerFn = (call: typeTime) => {
+export default function timer(t:number) {
+  const timerFn = (call: Function) => {
     let timer: number = setTimeout(() => {
-      call.fn();
+      call();
       clearTimeout(timer);
-    }, call.time);
+    }, t);
   };
   return {
     timerFn,
