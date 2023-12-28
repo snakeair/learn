@@ -5,7 +5,7 @@ import "animate.css";
 import router from "./router";
 import pinia from "./store/store";
 
-import loadingDirective from "@/cart/loading/loading";
+
 
 // 使用自动引入的时候部分组件会出现样式丢失，所以在这里全局引入，但是不知道打包的时候会不会重复打包
 import "@/assets/sass/element.scss";
@@ -17,5 +17,4 @@ const app = createApp(App);
 app.use(router);
 app.use(pinia);
 // app.use(UI);
-app.directive("load", loadingDirective);
 app.mount("#app");

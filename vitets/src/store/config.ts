@@ -3,6 +3,7 @@ import axios from "axios";
 export const configStore = defineStore("config", {
   state: () => {
     return {
+      default: String('this is store default'),
       size: Number(10),
       title: String(""),
       holder: String(""),
