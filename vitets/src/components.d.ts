@@ -5,28 +5,11 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AsideNav: typeof import('./components/asideNav.vue')['default']
-    Done: typeof import('./components/status/Done.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElButton: typeof import('element-plus/es')['ElButton']
-    FirmForm: typeof import('./components/status/firmForm.vue')['default']
-    LoginFooter: typeof import('./components/login/loginFooter.vue')['default']
     Message: typeof import('./components/_temp/message.vue')['default']
-    None: typeof import('./components/status/none.vue')['default']
-    Pages: typeof import('./components/pages.vue')['default']
-    PersonDone: typeof import('./components/status/personDone.vue')['default']
-    PersonForm: typeof import('./components/status/personForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SchoolForm: typeof import('./components/status/schoolForm.vue')['default']
-    SearchNone: typeof import('./components/searchNone.vue')['default']
-    StatusHeader: typeof import('./components/status/statusHeader.vue')['default']
-    Step: typeof import('./components/status/step.vue')['default']
-    Store: typeof import('./components/_temp/store.vue')['default']
-    UserFooter: typeof import('./components/userFooter.vue')['default']
-    UserHeader: typeof import('./components/userHeader.vue')['default']
-    UserTop: typeof import('./components/userTop.vue')['default']
-    Wait: typeof import('./components/status/wait.vue')['default']
   }
 }
 

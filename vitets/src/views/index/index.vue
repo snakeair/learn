@@ -3,8 +3,7 @@
     <message :msg="messageTitle" @emitAdd="addFn" v-model:childMsg="childMsg" ></message>
     index
     <el-alert>  {{ childMsg }}</el-alert>
-    <el-button @click="fatherFn">fatherMsg</el-button>
-    
+    <el-button v-auth="['btn']" @click="fatherFn">fatherMsg</el-button>
     
     <div class="box">
       <div class="child" ></div>
@@ -31,6 +30,13 @@ const fatherFn = () => {
 }
 
 provide('fatherMsg', father.value)
+
+
+const {val} = ['list1', 'list2', 'list3']
+console.log(val);
+
+
+
 </script>
 
 <style lang="scss" scoped>
