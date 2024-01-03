@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import cookie from "js-cookie";
-import { $get } from "@/assets/js/api";
+import { $get } from "@/assets/js/axios";
 import pinia from "@/store/store";
 import { indexStore } from "@/store/index";
 const store = indexStore(pinia);

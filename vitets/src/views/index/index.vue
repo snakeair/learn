@@ -1,5 +1,6 @@
 <template>
   <div>
+    <classDom></classDom>
     <message :msg="messageTitle" @emitAdd="addFn" v-model:childMsg="childMsg" ></message>
     index
     <el-alert>  {{ childMsg }}</el-alert>
@@ -15,6 +16,7 @@
 <script setup lang="ts" >
 import {ref, reactive, provide } from 'vue'
 import message from '@/components/_temp/message.vue'
+import classDom from '@/components/_temp/class.vue'
 import { ElMessage } from 'element-plus';
 
 const messageTitle = ref<string>('this is props')

@@ -1,7 +1,8 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios from "axios";
 import qs from "qs";
 import cookie from "js-cookie";
-import $message from "@/cart/message/index";
+import { ElMessage } from "element-plus";
+
 
 let url = window.location.href;
 
@@ -38,18 +39,22 @@ function removePendingRequest(config: reqTs) {
     const cancel = pendingRequest.get(requestKey);
     // cancel axios 的内置方法 用于取消上一次的请求
     cancel(requestKey);
-
     pendingRequest.delete(requestKey);
   }
 }
 
-const axiosInstance: AxiosInstance = axios.create({
+let header = {
+  apikey: apikey,
+  "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+};
+const instance = axios.create({
   baseURL: baseURL,
+  headers: header,
   timeout: 20000,
 });
 
 // 请求拦截器
-axiosInstance.interceptors.request.use(
+instance.interceptors.request.use(
   function (config) {
     removePendingRequest(config); // 检查是否存在重复请求，若存在则取消请求
     addPendingRequest(config); // 把当前请求添加到pendingRequest对象中
@@ -60,9 +65,12 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// axios实例拦截响应
-axiosInstance.interceptors.response.use(
+//响应拦截器
+instance.interceptors.response.use(
   (response) => {
+    if (cookie.get('token')) {
+			response.headers!['Authorization'] = `${cookie.get('token')}`;
+		}
     if (response.status === 200) {
       return Promise.resolve(response.data);
     } else {
@@ -74,9 +82,7 @@ axiosInstance.interceptors.response.use(
     removePendingRequest(error.config || {}); // 从pendingRequest对象中移除请求
     if (axios.isCancel(error)) {
       console.log("已取消的重复请求：" + error.message);
-      $message({
-        msg: "请不要多次请求",
-      });
+      ElMessage.error( "请不要多次请求",);
     } else {
       // 添加异常处理
     }
@@ -84,4 +90,19 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export default axiosInstance;
+// 调用登陆之后刷新页面，不然无法获取token
+export const $get = (url: string, data?: object) => {
+  return instance.get(url, { params: data });
+};
+
+export const $post = (url: string, data: object) => {
+  return instance.post(url, qs.stringify(data));
+};
+
+export const $del = (url: string, data: object) => {
+  return instance.delete(url, qs.stringify(data));
+};
+
+export const $put = (url: string, data: object) => {
+  return instance.put(url, qs.stringify(data));
+};
