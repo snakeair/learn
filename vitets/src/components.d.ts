@@ -8,7 +8,6 @@ declare module '@vue/runtime-core' {
     Class: typeof import('./components/_temp/class.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElMain: typeof import('element-plus/es')['ElMain']
     Message: typeof import('./components/_temp/message.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

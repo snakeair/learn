@@ -81,6 +81,37 @@
 
 
 
+/**
+ * auto: 是否自动补齐一行
+ * margin: 间距
+ * column: 列数（重复后面的宽度次数）
+ * width: 每一列的宽度
+ * height: 每一列的高度
+**/
+
+@mixin grid ($auto:true, $margin, $column,   $width:auto, $height:auto) {
+  display: grid; /* 声明一个Grid容器 */
+  width: fit-content; /* 元素的宽度为由内容的宽度撑开 */
+  gap: $margin; /* 声明行间距和列间距 */
+  @if($auto) {
+    grid-template-columns: repeat(auto-fill, $width);
+  } @else {
+    grid-template-columns: repeat($column, $width); /* 声明列数和每列的宽度，3列，每一列宽度为 200px */
+  }
+  grid-template-rows: $height; /* 声明行的高度 - 第一行100px，第二行200px，两行之外的行会将剩余高度均分 */
+  // grid-template-rows: 100px 200px;
+}
+/**
+ * columnStart, columnEnd: 元素横排的开始线和终止线
+ * rowStart, rowEnd: 元素竖列的开始线和终止线
+**/
+@mixin gridChild ($columnStart, $columnEnd, $rowStart, $rowEnd) { 
+  grid-column-start:$columnStart;
+  grid-column-end:$columnEnd;
+  grid-row-start: $rowStart;
+  grid-row-end: $rowEnd
+}
+
 
 
 

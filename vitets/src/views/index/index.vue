@@ -18,6 +18,18 @@ import {ref, reactive, provide } from 'vue'
 import message from '@/components/_temp/message.vue'
 import classDom from '@/components/_temp/class.vue'
 import { ElMessage } from 'element-plus';
+import dayjs from 'dayjs'
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween);
+
+const curDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
+const timestamp = dayjs().valueOf();
+console.log(timestamp);
+
+
+const bl = dayjs().isBetween('2010-10-19', dayjs('2030-10-25')) 
+console.log(bl);
+
 
 const messageTitle = ref<string>('this is props')
 
