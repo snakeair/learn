@@ -64,9 +64,9 @@ console.log(import.meta.env.VITE_APP_NAME)
 .user-container{
   @include flex(left, top); 
   align-items: stretch;
-  width: 1200px; margin:11px auto 38px;
+  width: 100vw; margin:11px auto 38px;
   .user-main{
-    width: 1000px;
+    width: 100%;
   }
 }
 .default-footer{

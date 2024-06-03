@@ -30,6 +30,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   // linkActiveClass: "cur",
+  // history: createWebHashHistory(),
   history: createWebHashHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
